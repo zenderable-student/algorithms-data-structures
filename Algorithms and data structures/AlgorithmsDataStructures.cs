@@ -13,8 +13,7 @@ namespace Algorithms_and_data_structures
     {
         static void Main(string[] args)
         {
-            int first_choice, picked_algorithm=0, picked_implementation;
-            string navigation;
+            int first_choice, picked_algorithm = 0;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("************** KAROL STUMSKI ***************\n");
@@ -46,12 +45,12 @@ namespace Algorithms_and_data_structures
 
                     case 1:
                         AgainFactorial:
-                        int factorial_number;
+                        int factorial_number, picked_implementation_factorial;
                         Console.WriteLine("Type '1' if you want use iterative implementation of factorial\nType '2' if you want use recursive implementation of factorial");
                         Console.Write("Your choice: ");
-                        while (!int.TryParse(Console.ReadLine(), out picked_implementation) || !(picked_implementation >= 1 && picked_algorithm <= 2))
+                        while (!int.TryParse(Console.ReadLine(), out picked_implementation_factorial) || !(picked_implementation_factorial >= 1 && picked_implementation_factorial <= 2))
                             Console.Write("Type from '1' or '2': ");
-                        switch (picked_implementation)
+                        switch (picked_implementation_factorial)
                         {
                             case 1:
                                 Console.Write("Type number: ");
@@ -113,7 +112,7 @@ namespace Algorithms_and_data_structures
                         Console.Write("\nType amount of fibonacci numbers: ");
                         while (!int.TryParse(Console.ReadLine(), out n))
                             Console.WriteLine("Type number: ");
-                        Console.Write($"n-th number is {Algorithms.fib(n)}\n");
+                        Console.Write($"n-th number is {Algorithms.fib_recursive(n)}\n");
                         TryAgainMenuFib:
                         Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");

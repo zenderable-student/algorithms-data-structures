@@ -8,12 +8,12 @@ namespace Algorithms_and_data_structures
 {
     class Algorithms
     {
-        public static int fib(int n)
+        public static int fib_recursive(int n)
         {
             if ((n == 1) || (n == 2))
                 return 1;
             else
-                return fib(n - 1) + fib(n - 2);
+                return fib_recursive(n - 1) + fib_recursive(n - 2);
         }
 
         public static int factorial_recursive(int i)
