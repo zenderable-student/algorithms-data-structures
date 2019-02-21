@@ -13,7 +13,8 @@ namespace Algorithms_and_data_structures
     {
         static void Main(string[] args)
         {
-            int first_choice, picked_algorithm = 0;
+            int first_choice = 0, picked_algorithm = 0;
+            string navigation;
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("************** KAROL STUMSKI ***************\n");
@@ -30,7 +31,8 @@ namespace Algorithms_and_data_structures
             if(first_choice == 1)
             {
                 //list of all algorithms
-                Algorithms algorithms = new Algorithms();
+                Factorial factorial = new Factorial();
+                Fibonacci fibonacci = new Fibonacci();
                 Algorithm_list:
                 Console.BackgroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -56,7 +58,7 @@ namespace Algorithms_and_data_structures
                                 Console.Write("Type number: ");
                                 while (!int.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Algorithms.factorial_iteratively(factorial_number)}\n");
+                                Console.Write($"Factorial number is {Factorial.factorial_iteratively(factorial_number)}\n");
                                 TryAgainMenuFactorial:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");
@@ -82,7 +84,7 @@ namespace Algorithms_and_data_structures
                                 Console.Write("Type number: ");
                                 while (!int.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Algorithms.factorial_recursive(factorial_number)}\n");
+                                Console.Write($"Factorial number is {Factorial.factorial_recursive(factorial_number)}\n");
                                 TryAgainMenuFactorial2:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithms list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");
@@ -112,7 +114,7 @@ namespace Algorithms_and_data_structures
                         Console.Write("\nType amount of fibonacci numbers: ");
                         while (!int.TryParse(Console.ReadLine(), out n))
                             Console.WriteLine("Type number: ");
-                        Console.Write($"n-th number is {Algorithms.fib_recursive(n)}\n");
+                        Console.Write($"n-th number is {Fibonacci.fib_recursive(n)}\n");
                         TryAgainMenuFib:
                         Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");

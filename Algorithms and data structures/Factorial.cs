@@ -6,16 +6,8 @@ using System.Threading.Tasks;
 
 namespace Algorithms_and_data_structures
 {
-    class Algorithms
+    class Factorial
     {
-        public static int fib_recursive(int n)
-        {
-            if ((n == 1) || (n == 2))
-                return 1;
-            else
-                return fib_recursive(n - 1) + fib_recursive(n - 2);
-        }
-
         public static int factorial_recursive(int i)
         {
             if (i < 1)
@@ -23,7 +15,6 @@ namespace Algorithms_and_data_structures
             else
                 return i * factorial_recursive(i - 1);
         }
-
         public static int factorial_iteratively(int n)
         {
             int result = 1;
