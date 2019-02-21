@@ -58,7 +58,7 @@ namespace Algorithms_and_data_structures
                                 Console.Write("\nType number: ");
                                 while (!int.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Factorial.factorial_iteratively(factorial_number)}\n");
+                                Console.Write($"Factorial number is {Factorial.factorial_iterative(factorial_number)}\n");
                                 TryAgainMenuFactorial:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");

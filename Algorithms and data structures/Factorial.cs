@@ -15,7 +15,7 @@ namespace Algorithms_and_data_structures
             else
                 return i * factorial_recursive(i - 1);
         }
-        public static int factorial_iteratively(int n)
+        public static int factorial_iterative(int n)
         {
             int result = 1;
             for (int i = 1; i <= n; i++)
