@@ -55,7 +55,7 @@ namespace Algorithms_and_data_structures
                         switch (picked_implementation_factorial)
                         {
                             case 1:
-                                Console.Write("Type number: ");
+                                Console.Write("\nType number: ");
                                 while (!int.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
                                 Console.Write($"Factorial number is {Factorial.factorial_iteratively(factorial_number)}\n");
@@ -81,7 +81,7 @@ namespace Algorithms_and_data_structures
                                 }
                                 break;
                             case 2:
-                                Console.Write("Type number: ");
+                                Console.Write("\nType number: ");
                                 while (!int.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
                                 Console.Write($"Factorial number is {Factorial.factorial_recursive(factorial_number)}\n");
@@ -110,31 +110,78 @@ namespace Algorithms_and_data_structures
                         break;
                     case 2:
                         AgainFib:
-                        int n;
-                        Console.Write("\nType amount of fibonacci numbers: ");
-                        while (!int.TryParse(Console.ReadLine(), out n))
-                            Console.WriteLine("Type number: ");
-                        Console.Write($"n-th number is {Fibonacci.fib_recursive(n)}\n");
-                        TryAgainMenuFib:
-                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
-                        Console.Write("Type: ");
-                        navigation = Console.ReadLine();
-                        if ((navigation == "R") || (navigation == "r"))
+                        int picked_implementation_fibonacci=0;
+                        Console.WriteLine("Type '1' if you want use iterative implementation of fibonacci numbers\nType '2' if you want use recursive implementation of fibonacci numbers");
+                        Console.Write("Your choice: ");
+                        while (!int.TryParse(Console.ReadLine(), out picked_implementation_fibonacci) || !(picked_implementation_fibonacci >= 1 && picked_implementation_fibonacci <= 2))
+                            Console.Write("Type from '1' or '2': ");
+                        switch (picked_implementation_fibonacci)
                         {
-                            goto AgainFib;
+                            case 1:
+                                int n;
+                                Console.Write("\nType amount of fibonacci numbers: ");
+                                while (!int.TryParse(Console.ReadLine(), out n))
+                                    Console.WriteLine("\nType number: ");
+                                Console.Write($"n-th number is {Fibonacci.fib_iteratively(n)}\n");
+                                TryAgainMenuFib:
+                                Console.WriteLine(
+                                    "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                                Console.Write("Type: ");
+                                navigation = Console.ReadLine();
+                                if ((navigation == "R") || (navigation == "r"))
+                                {
+                                    goto AgainFib;
+                                }
+
+                                if (navigation == "L" || navigation == "l")
+                                {
+                                    goto Algorithm_list;
+                                }
+
+                                if (navigation == "Q" || navigation == "q")
+                                {
+                                    goto Start;
+                                }
+                                else
+                                {
+                                    goto TryAgainMenuFib;
+                                }
+
+                                break;
+
+                            case 2:
+                                int m;
+                                Console.Write("\nType amount of fibonacci numbers: ");
+                                while (!int.TryParse(Console.ReadLine(), out m))
+                                    Console.WriteLine("\nType number: ");
+                                Console.Write($"n-th number is {Fibonacci.fib_recursive(m)}\n");
+                                TryAgainMenuFib2:
+                                Console.WriteLine(
+                                    "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                                Console.Write("Type: ");
+                                navigation = Console.ReadLine();
+                                if ((navigation == "R") || (navigation == "r"))
+                                {
+                                    goto AgainFib;
+                                }
+
+                                if (navigation == "L" || navigation == "l")
+                                {
+                                    goto Algorithm_list;
+                                }
+
+                                if (navigation == "Q" || navigation == "q")
+                                {
+                                    goto Start;
+                                }
+                                else
+                                {
+                                    goto TryAgainMenuFib2;
+                                }
+
+                                break;
                         }
-                        if (navigation == "L" || navigation == "l")
-                        {
-                            goto Algorithm_list;
-                        }
-                        if (navigation == "Q" || navigation == "q")
-                        {
-                            goto Start;
-                        }
-                        else
-                        {
-                            goto TryAgainMenuFib;
-                        }
+
                         break;
                 }
 
