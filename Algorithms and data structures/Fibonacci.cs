@@ -8,15 +8,15 @@ namespace Algorithms_and_data_structures
 {
     class Fibonacci
     {
-        public static ulong fib_recursive(ulong n)
+        public static ulong Fib_recursive(ulong n)
         {
             if ((n == 1) || (n == 2))
                 return 1;
             else
-                return fib_recursive(n - 1) + fib_recursive(n - 2);
+                return Fib_recursive(n - 1) + Fib_recursive(n - 2);
         }
 
-        public static ulong fib_iteratively(ulong m)
+        public static ulong Fib_iteratively(ulong m)
         {
             if (m <= 2)
                 return 1;

@@ -121,7 +121,7 @@ namespace Algorithms_and_data_structures
                                 Console.Write("\nType amount of fibonacci numbers: ");
                                 while (!ulong.TryParse(Console.ReadLine(), out n))
                                     Console.WriteLine("\nType number: ");
-                                Console.Write($"n-th number is {Fibonacci.fib_iteratively(n)}\n");
+                                Console.Write($"n-th number is {Fibonacci.Fib_iteratively(n)}\n");
                                 TryAgainMenuFib:
                                 Console.WriteLine(
                                     "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
@@ -150,7 +150,7 @@ namespace Algorithms_and_data_structures
                                 Console.Write("\nType amount of fibonacci numbers: ");
                                 while (!ulong.TryParse(Console.ReadLine(), out m))
                                     Console.WriteLine("\nType number: ");
-                                Console.Write($"n-th number is {Fibonacci.fib_recursive(m)}\n");
+                                Console.Write($"n-th number is {Fibonacci.Fib_recursive(m)}\n");
                                 TryAgainMenuFib2:
                                 Console.WriteLine(
                                     "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
