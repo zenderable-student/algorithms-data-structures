@@ -58,7 +58,7 @@ namespace Algorithms_and_data_structures
                             case 1:
                                 Console.Write("\nType number: ");
                                 while (!ulong.TryParse(Console.ReadLine(), out factorial_number))
-                                    Console.WriteLine("Wrong! Try again type number: ");
+                                    Console.Write("Wrong! Try again type number: ");
                                 Console.Write($"Factorial number is {Factorial.Factorial_iterative(factorial_number)}\n");
                                 TryAgainMenuFactorial:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
@@ -83,7 +83,7 @@ namespace Algorithms_and_data_structures
                             case 2:
                                 Console.Write("\nType number: ");
                                 while (!ulong.TryParse(Console.ReadLine(), out factorial_number))
-                                    Console.WriteLine("Wrong! Try again type number: ");
+                                    Console.Write("Wrong! Try again type number: ");
                                 Console.Write($"Factorial number is {Factorial.Factorial_recursive(factorial_number)}\n");
                                 TryAgainMenuFactorial2:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithms list, type 'L'.\nIf you want back to main menu, type 'Q'");
