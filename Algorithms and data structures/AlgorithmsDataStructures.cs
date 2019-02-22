@@ -117,9 +117,9 @@ namespace Algorithms_and_data_structures
                         switch (picked_implementation_fibonacci)
                         {
                             case 1:
-                                int n;
+                                ulong n;
                                 Console.Write("\nType amount of fibonacci numbers: ");
-                                while (!int.TryParse(Console.ReadLine(), out n))
+                                while (!ulong.TryParse(Console.ReadLine(), out n))
                                     Console.WriteLine("\nType number: ");
                                 Console.Write($"n-th number is {Fibonacci.fib_iteratively(n)}\n");
                                 TryAgainMenuFib:
@@ -146,9 +146,9 @@ namespace Algorithms_and_data_structures
                                     goto TryAgainMenuFib;
                                 }
                             case 2:
-                                int m;
+                                ulong m;
                                 Console.Write("\nType amount of fibonacci numbers: ");
-                                while (!int.TryParse(Console.ReadLine(), out m))
+                                while (!ulong.TryParse(Console.ReadLine(), out m))
                                     Console.WriteLine("\nType number: ");
                                 Console.Write($"n-th number is {Fibonacci.fib_recursive(m)}\n");
                                 TryAgainMenuFib2:
