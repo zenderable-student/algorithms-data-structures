@@ -8,17 +8,17 @@ namespace Algorithms_and_data_structures
 {
     class Factorial
     {
-        public static int factorial_recursive(int i)
+        public static ulong Factorial_recursive(ulong i)
         {
             if (i < 1)
                 return 1;
             else
-                return i * factorial_recursive(i - 1);
+                return i * Factorial_recursive(i - 1);
         }
-        public static int factorial_iterative(int n)
+        public static ulong Factorial_iterative(ulong n)
         {
-            int result = 1;
-            for (int i = 1; i <= n; i++)
+            ulong result = 1;
+            for (ulong i = 1; i <= n; i++)
             {
                 result *= i;
             }

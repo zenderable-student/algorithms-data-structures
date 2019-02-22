@@ -11,7 +11,7 @@ namespace Algorithms_and_data_structures
     //A simple console app with all algorithms and data structures at my university (UKW)
     class MainMenu
     {
-        static void Main(string[] args)
+        static void Main()
         {
             int first_choice = 0, picked_algorithm = 0;
             string navigation;
@@ -47,7 +47,8 @@ namespace Algorithms_and_data_structures
 
                     case 1:
                         AgainFactorial:
-                        int factorial_number, picked_implementation_factorial;
+                        int picked_implementation_factorial;
+                        ulong factorial_number;
                         Console.WriteLine("Type '1' if you want use iterative implementation of factorial\nType '2' if you want use recursive implementation of factorial");
                         Console.Write("Your choice: ");
                         while (!int.TryParse(Console.ReadLine(), out picked_implementation_factorial) || !(picked_implementation_factorial >= 1 && picked_implementation_factorial <= 2))
@@ -56,9 +57,9 @@ namespace Algorithms_and_data_structures
                         {
                             case 1:
                                 Console.Write("\nType number: ");
-                                while (!int.TryParse(Console.ReadLine(), out factorial_number))
+                                while (!ulong.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Factorial.factorial_iterative(factorial_number)}\n");
+                                Console.Write($"Factorial number is {Factorial.Factorial_iterative(factorial_number)}\n");
                                 TryAgainMenuFactorial:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");
@@ -79,12 +80,11 @@ namespace Algorithms_and_data_structures
                                 {
                                     goto TryAgainMenuFactorial;
                                 }
-                                break;
                             case 2:
                                 Console.Write("\nType number: ");
-                                while (!int.TryParse(Console.ReadLine(), out factorial_number))
+                                while (!ulong.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.WriteLine("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Factorial.factorial_recursive(factorial_number)}\n");
+                                Console.Write($"Factorial number is {Factorial.Factorial_recursive(factorial_number)}\n");
                                 TryAgainMenuFactorial2:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithms list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");
@@ -105,7 +105,6 @@ namespace Algorithms_and_data_structures
                                 {
                                     goto TryAgainMenuFactorial2;
                                 }
-                                break;
                         }
                         break;
                     case 2:
@@ -146,9 +145,6 @@ namespace Algorithms_and_data_structures
                                 {
                                     goto TryAgainMenuFib;
                                 }
-
-                                break;
-
                             case 2:
                                 int m;
                                 Console.Write("\nType amount of fibonacci numbers: ");
@@ -178,8 +174,6 @@ namespace Algorithms_and_data_structures
                                 {
                                     goto TryAgainMenuFib2;
                                 }
-
-                                break;
                         }
 
                         break;
