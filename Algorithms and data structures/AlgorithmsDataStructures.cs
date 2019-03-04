@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace Algorithms_and_data_structures
 {
     //A simple console app with all algorithms and data structures at my university (UKW)
-    class MainMenu
+    public class MainMenu
     {
         static void Main()
         {
@@ -182,9 +182,52 @@ namespace Algorithms_and_data_structures
             }
             else
             {
-                //ListOfDataStructures:
+                bool data_structures = false;
+                int picked_structure;
                 //list of all examples of data structures
-                Console.WriteLine("1: Stack (not working)");
+                Stack stack = new Stack();
+                DataStrucuresList:
+                Console.WriteLine("\n1: Stack");
+                while(data_structures != true)
+                {
+                    bool again_list_structure = false;
+                    while (again_list_structure != true)
+                    {
+                        Console.Write("\nPick number of data structure: ");
+                        while (!int.TryParse(Console.ReadLine(), out picked_structure) || !(picked_structure >= 1 && picked_structure <= 2))
+                            Console.Write("Type '1' or '2': ");
+                        while (again_list_structure != true)
+
+                            switch (picked_structure)
+                            {
+                                case 1:
+                                    int value, choice;
+                                    do
+                                    {
+                                        Console.Write("\n1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT\n\nYour choice: ");
+                                        while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 4))
+                                            Console.Write("Type '1' to '4': ");
+                                        if (choice == 1)
+                                        {
+                                            Console.WriteLine("\nEnter value: ");
+                                            while (!int.TryParse(Console.ReadLine(), out value))
+                                                Console.Write("Type value: ");
+                                            Stack.Push(value);
+                                        }
+                                        if (choice == 2)
+                                        {
+                                            Stack.Pop();
+                                        }
+                                        if (choice == 3)
+                                        {
+                                            Stack.Display();
+                                        }
+                                    } while (choice != 4);
+                                    goto DataStrucuresList;
+                                    break;
+                            }
+                    }
+                }
             }
 
             //end
