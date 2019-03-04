@@ -24,7 +24,7 @@ namespace Algorithms_and_data_structures
             Console.WriteLine("* ALGORITHMS AND DATA STRUCTURES *\n");
             Console.ResetColor();
             Start:
-            Console.WriteLine("Type '1' if you want check some algorithms\nType '2' if you want check some examples of data structures (not working)");
+            Console.WriteLine("Type '1' if you want check some algorithms\nType '2' if you want check some examples of data structures");
             Console.Write("Your choice: ");
             while (!int.TryParse(Console.ReadLine(), out first_choice) || !(first_choice >= 1 && first_choice <= 2))
                 Console.Write("Type '1' or '2': ");
@@ -186,7 +186,11 @@ namespace Algorithms_and_data_structures
                 int picked_structure;
                 //list of all examples of data structures
                 Stack stack = new Stack();
-                DataStrucuresList:
+                DataStructuresList:
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n* DATA STRUCTURES LIST *");
+                Console.ResetColor();
                 Console.WriteLine("\n1: Stack");
                 while(data_structures != true)
                 {
@@ -209,7 +213,7 @@ namespace Algorithms_and_data_structures
                                             Console.Write("Type '1' to '4': ");
                                         if (choice == 1)
                                         {
-                                            Console.WriteLine("\nEnter value: ");
+                                            Console.Write("\nEnter value: ");
                                             while (!int.TryParse(Console.ReadLine(), out value))
                                                 Console.Write("Type value: ");
                                             Stack.Push(value);
@@ -223,8 +227,7 @@ namespace Algorithms_and_data_structures
                                             Stack.Display();
                                         }
                                     } while (choice != 4);
-                                    goto DataStrucuresList;
-                                    break;
+                                    goto DataStructuresList;
                             }
                     }
                 }
