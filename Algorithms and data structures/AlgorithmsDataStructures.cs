@@ -197,7 +197,7 @@ namespace Algorithms_and_data_structures
                     bool again_list_structure = false;
                     while (again_list_structure != true)
                     {
-                        Console.Write("\nPick number of data structure: ");
+                        Console.Write("Pick number of data structure: ");
                         while (!int.TryParse(Console.ReadLine(), out picked_structure) || !(picked_structure >= 1 && picked_structure <= 2))
                             Console.Write("Type '1' or '2': ");
                         while (again_list_structure != true)
@@ -205,15 +205,16 @@ namespace Algorithms_and_data_structures
                             switch (picked_structure)
                             {
                                 case 1:
+                                    AgainStack:
                                     int value, choice;
                                     do
                                     {
-                                        Console.Write("\n1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT\n\nYour choice: ");
+                                        Console.Write("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: ");
                                         while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 4))
                                             Console.Write("Type '1' to '4': ");
                                         if (choice == 1)
                                         {
-                                            Console.Write("\nEnter value: ");
+                                            Console.Write("Enter value: ");
                                             while (!int.TryParse(Console.ReadLine(), out value))
                                                 Console.Write("Type value: ");
                                             Stack.Push(value);
@@ -227,7 +228,26 @@ namespace Algorithms_and_data_structures
                                             Stack.Display();
                                         }
                                     } while (choice != 4);
-                                    goto DataStructuresList;
+                                    TryAgainMenuStack:
+                                    Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                                    Console.Write("Type: ");
+                                    navigation = Console.ReadLine();
+                                    if ((navigation == "R") || (navigation == "r"))
+                                    {
+                                        goto AgainStack;
+                                    }
+                                    if (navigation == "L" || navigation == "l")
+                                    {
+                                        goto DataStructuresList;
+                                    }
+                                    if (navigation == "Q" || navigation == "q")
+                                    {
+                                        goto Start;
+                                    }
+                                    else
+                                    {
+                                        goto TryAgainMenuStack;
+                                    }
                             }
                     }
                 }
