@@ -8,7 +8,7 @@ namespace Algorithms_and_data_structures
 {
     public class Stack
     {
-        
+        //public static int Wiek { get; set; }
         //// not working solution for size of the stack, will fix later ////
         public static int Rozmiar()
         {
@@ -19,6 +19,8 @@ namespace Algorithms_and_data_structures
             return x;
         }
 
+        //public static int x = Wiek;
+        
         public static int x = Rozmiar();
         public static int top = -1;
         public static int[] z = new int [x]; //here Rozmiar()

@@ -200,7 +200,12 @@ namespace Algorithms_and_data_structures
                         case 1:
                            AgainStack:
                            int value, choice;
-                           Stack.Rozmiar(); //declare size of the stack
+                           int x;
+                           Console.WriteLine("Declare the size of the stack: ");
+                           while (!int.TryParse(Console.ReadLine(), out x) || !(x >= 0))
+                               Console.Write("Type number: ");
+                           //Stack.Wiek = x;
+                             Stack.Rozmiar(); //declare size of the stack
                                do
                                {
                                     Console.Write("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: ");
