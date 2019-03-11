@@ -67,19 +67,19 @@ namespace Algorithms_and_data_structures
                                 navigation = Console.ReadLine();
                                 if ((navigation == "R") || (navigation == "r"))
                                 {
-                                    goto AgainFactorial;
+                                    goto AgainFactorial; //use again algorithm
                                 }
                                 if (navigation == "L" || navigation == "l")
                                 {
-                                    goto Algorithm_list;
+                                    goto Algorithm_list; //list of algorithms
                                 }
                                 if (navigation == "Q" || navigation == "q")
                                 {
-                                    goto Start;
+                                    goto Start; //beginning
                                 }
                                 else
                                 {
-                                    goto TryAgainMenuFactorial;
+                                    goto TryAgainMenuFactorial; //navigation
                                 }
                             case 2:
                                 Console.Write("\nType number: ");
@@ -92,19 +92,19 @@ namespace Algorithms_and_data_structures
                                 navigation = Console.ReadLine();
                                 if ((navigation == "R") || (navigation == "r"))
                                 {
-                                    goto AgainFactorial;
+                                    goto AgainFactorial; //again algorithm
                                 }
                                 if (navigation == "L" || navigation == "l")
                                 {
-                                    goto Algorithm_list;
+                                    goto Algorithm_list; //list of algorithms
                                 }
                                 if (navigation == "Q" || navigation == "q")
                                 {
-                                    goto Start;
+                                    goto Start; //beginning
                                 }
                                 else
                                 {
-                                    goto TryAgainMenuFactorial2;
+                                    goto TryAgainMenuFactorial2; //navigation
                                 }
                         }
                         break;
@@ -130,21 +130,21 @@ namespace Algorithms_and_data_structures
                                 navigation = Console.ReadLine();
                                 if ((navigation == "R") || (navigation == "r"))
                                 {
-                                    goto AgainFib;
+                                    goto AgainFib; //use again this algorithm
                                 }
 
                                 if (navigation == "L" || navigation == "l")
                                 {
-                                    goto Algorithm_list;
+                                    goto Algorithm_list; //list of algorithms
                                 }
 
                                 if (navigation == "Q" || navigation == "q")
                                 {
-                                    goto Start;
+                                    goto Start; //beginning
                                 }
                                 else
                                 {
-                                    goto TryAgainMenuFib;
+                                    goto TryAgainMenuFib; //navigation
                                 }
                             case 2:
                                 ulong m;
@@ -159,21 +159,21 @@ namespace Algorithms_and_data_structures
                                 navigation = Console.ReadLine();
                                 if ((navigation == "R") || (navigation == "r"))
                                 {
-                                    goto AgainFib;
+                                    goto AgainFib; //use again fibonacci implementation
                                 }
 
                                 if (navigation == "L" || navigation == "l")
                                 {
-                                    goto Algorithm_list;
+                                    goto Algorithm_list; //go to list of algorithms
                                 }
 
                                 if (navigation == "Q" || navigation == "q")
                                 {
-                                    goto Start;
+                                    goto Start; //go to beginning
                                 }
                                 else
                                 {
-                                    goto TryAgainMenuFib2;
+                                    goto TryAgainMenuFib2; //navigation
                                 }
                         }
 
@@ -181,7 +181,7 @@ namespace Algorithms_and_data_structures
                 }
 
             }
-            if (first_choice == 2)
+            if (first_choice == 2) //data structures
             {
                 int picked_structure;
                 //list of all examples of data structures
@@ -200,18 +200,20 @@ namespace Algorithms_and_data_structures
                         case 1:
                            AgainStack:
                            int value, choice;
+                           /* //not working idea
                            int x;
                            Console.WriteLine("Declare the size of the stack: ");
                            while (!int.TryParse(Console.ReadLine(), out x) || !(x >= 0))
                                Console.Write("Type number: ");
-                           //Stack.Wiek = x;
-                             Stack.Rozmiar(); //declare size of the stack
+                           Stack.Wiek = x;
+                           */
+                        Stack.Rozmiar(); //declare size of the stack
                                do
                                {
-                                    Console.Write("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: ");
+                                    Console.Write("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: "); //pick option
                                     while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 4))
-                                        Console.Write("Type '1' to '4': ");
-                                    if (choice == 1)
+                                        Console.Write("Type '1' to '4': "); //if wrong, type correct integer
+                                    if (choice == 1) //push
                                     {
                                             Console.Write("Enter value: ");
                                             while (!int.TryParse(Console.ReadLine(), out value))
@@ -219,16 +221,16 @@ namespace Algorithms_and_data_structures
                                             Stack.Push(value); //add item
                                     }
 
-                                    if (choice == 2)
+                                    if (choice == 2) //pop
                                     {
                                             Stack.Pop(); //remove item
                                     }
 
-                                    if (choice == 3)
+                                    if (choice == 3) //display
                                     {
                                             Stack.Display(); //view
                                     }
-                               } while (choice != 4);
+                               } while (choice != 4); //exit, end of loop
 
                                     TryAgainMenuStack:
                                     Console.WriteLine(
@@ -237,27 +239,27 @@ namespace Algorithms_and_data_structures
                                     navigation = Console.ReadLine();
                                     if ((navigation == "R") || (navigation == "r"))
                                     {
-                                        goto AgainStack;
+                                        goto AgainStack; //again use stack data structure
                                     }
 
                                     if (navigation == "L" || navigation == "l")
                                     {
-                                        goto DataStructuresList;
+                                        goto DataStructuresList; //go to list of data structures
                                     }
 
                                     if (navigation == "Q" || navigation == "q")
                                     {
-                                        goto Start;
+                                        goto Start; //go to beginning of the program
                                     }
                                     else
                                     {
-                                        goto TryAgainMenuStack;
+                                        goto TryAgainMenuStack; //if wrong answer, repeat navigation menu
                                     }
                 }
             }
             else
             {
-                goto Start;
+                goto Start; //if wrong choice, repeat 
             }
             //end
             Console.ReadKey();

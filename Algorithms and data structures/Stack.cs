@@ -10,7 +10,7 @@ namespace Algorithms_and_data_structures
     {
         //public static int Wiek { get; set; }
         //// not working solution for size of the stack, will fix later ////
-        public static int Rozmiar()
+        public static int Rozmiar() //size of the stack
         {
             int x;
             Console.WriteLine("Declare the size of the stack: ");
@@ -41,22 +41,22 @@ namespace Algorithms_and_data_structures
         public static void Pop() //pop - to remove item
         {
             //check it's empty or not
-            if (top == -1)
+            if (top == -1) //because array is counted from 0
             {
                 Console.WriteLine("\nStack is EMPTY (or underflow)");
             }
             else
-                top--;
+                top--; //remove from top
         }
         public static void Display() //display - to view output
         {
-            if(top == -1)
+            if(top == -1) //because array is counted from 0, so if size is 0 or it's empty there is nothing to display
             {
                 Console.WriteLine("\nNothing to display!");
             }
             else
             {
-                Console.Write("\nArray is: "); //from top to bottom
+                Console.Write("\nArray is: "); //show from top to bottom
                 for (int i = 0; i <= top; i++)
                 {
                     Console.WriteLine(z[i]);
