@@ -32,17 +32,16 @@ namespace Algorithms_and_data_structures
             if(first_choice == 1)
             {
                 //list of all algorithms
-                Factorial factorial = new Factorial();
-                Fibonacci fibonacci = new Fibonacci();
+
                 Algorithm_list:
                 Console.BackgroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n* ALGORITHMS LIST *");
                 Console.ResetColor();
-                Console.WriteLine("\n1: Factorial\n2: Fibonacci number"); //here more algorithms
+                Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort"); //here more algorithms
                 Console.Write("\nPick number of algorithm: ");
-                while (!int.TryParse(Console.ReadLine(), out picked_algorithm) || !(picked_algorithm >= 1 && picked_algorithm <= 2))
-                    Console.Write("Type '1' or '2': ");
+                while (!int.TryParse(Console.ReadLine(), out picked_algorithm) || !(picked_algorithm >= 1 && picked_algorithm <= 3))
+                    Console.Write("Type '1' to '3': ");
                 switch (picked_algorithm)
                 {
 
@@ -82,6 +81,7 @@ namespace Algorithms_and_data_structures
                                     goto TryAgainMenuFactorial; //navigation
                                 }
                             case 2:
+                                Factorial factorial = new Factorial();
                                 Console.Write("\nType number: ");
                                 while (!ulong.TryParse(Console.ReadLine(), out factorial_number))
                                     Console.Write("Wrong! Try again type number: ");
@@ -109,6 +109,7 @@ namespace Algorithms_and_data_structures
                         }
                         break;
                     case 2:
+                        Fibonacci fibonacci = new Fibonacci();
                         AgainFib:
                         int picked_implementation_fibonacci=0;
                         Console.WriteLine("Type '1' if you want use iterative implementation of fibonacci numbers\nType '2' if you want use recursive implementation of fibonacci numbers");
@@ -176,17 +177,24 @@ namespace Algorithms_and_data_structures
                                     goto TryAgainMenuFib2; //navigation
                                 }
                         }
-
                         break;
+                    case 3:
+                        BubbleSort bubblesort = new BubbleSort();
+                        int bubblesortamount;
+                        //AgainBubbleSort:
+                        Console.Write("\nType number: ");
+                        while (!int.TryParse(Console.ReadLine(), out bubblesortamount) || !(bubblesortamount > 0))
+                            Console.Write("Type again: ");
+                        int[] bubblesize = new int[bubblesortamount];
+                        break;
+
                 }
 
             }
             if (first_choice == 2) //data structures
             {
                 int picked_structure;
-                //list of all examples of data structures
-                Stack stack = new Stack();
-                DataStructuresList:
+                DataStructuresList: //list of all examples of data structures
                 Console.BackgroundColor = ConsoleColor.Gray;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n* DATA STRUCTURES LIST *");
@@ -200,14 +208,7 @@ namespace Algorithms_and_data_structures
                         case 1:
                            AgainStack:
                            int value, choice;
-                           /* //not working idea
-                           int x;
-                           Console.WriteLine("Declare the size of the stack: ");
-                           while (!int.TryParse(Console.ReadLine(), out x) || !(x >= 0))
-                               Console.Write("Type number: ");
-                           Stack.Wiek = x;
-                           */
-                        Stack.Rozmiar(); //declare size of the stack
+                           Stack stack = new Stack();
                                do
                                {
                                     Console.Write("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: "); //pick option

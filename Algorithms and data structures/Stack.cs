@@ -8,9 +8,7 @@ namespace Algorithms_and_data_structures
 {
     public class Stack
     {
-        //public static int Wiek { get; set; }
-        //// not working solution for size of the stack, will fix later ////
-        public static int Rozmiar() //size of the stack
+        public static int StackSize() //size of the stack
         {
             int x;
             Console.WriteLine("Declare the size of the stack: ");
@@ -18,12 +16,10 @@ namespace Algorithms_and_data_structures
                 Console.Write("Type number: ");
             return x;
         }
-
-        //public static int x = Wiek;
         
-        public static int x = Rozmiar();
+        public static int x = StackSize();
         public static int top = -1;
-        public static int[] z = new int [x]; //here Rozmiar()
+        public static readonly int[] tabStack = new int [x]; //here StackSize()
 
         public static void Push(int value) //push - to add item
         {
@@ -35,7 +31,7 @@ namespace Algorithms_and_data_structures
             else
             {
                 top++;
-                z[top] = value;
+                tabStack[top] = value;
             }
         }
         public static void Pop() //pop - to remove item
@@ -59,7 +55,7 @@ namespace Algorithms_and_data_structures
                 Console.Write("\nArray is: "); //show from top to bottom
                 for (int i = 0; i <= top; i++)
                 {
-                    Console.WriteLine(z[i]);
+                    Console.WriteLine(tabStack[i]);
                 }
             }
         }
