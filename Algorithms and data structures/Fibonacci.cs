@@ -1,16 +1,17 @@
-﻿namespace Algorithms_and_data_structures
+﻿using System;
+namespace Algorithms_and_data_structures
 {
-    class Fibonacci
+    internal static class Fibonacci
     {
-        public static ulong Fib_recursive(ulong n)
+        public static void FibonacciIterativelyMenu()
         {
-            if ((n == 1) || (n == 2))
-                return 1;
-            else
-                return Fib_recursive(n - 1) + Fib_recursive(n - 2);
+            ulong n;
+            Console.Write("\nType amount of fibonacci numbers: ");
+            while (!ulong.TryParse(Console.ReadLine(), out n))
+                Console.WriteLine("\nType number: ");
+            Console.Write($"n-th number is {Fib_iterative(n)}\n");
         }
-
-        public static ulong Fib_iteratively(ulong m)
+        private static ulong Fib_iterative(ulong m)
         {
             if (m <= 2)
                 return 1;
@@ -29,5 +30,22 @@
                 return f2;
             }
         }
+        public static void FibonacciRecursivelyMenu()
+        {
+            ulong m;
+            Console.Write("\nType amount of fibonacci numbers: ");
+            while (!ulong.TryParse(Console.ReadLine(), out m))
+                Console.WriteLine("\nType number: ");
+            Console.Write($"n-th number is {Fib_recursive(m)}\n");
+        }
+        private static ulong Fib_recursive(ulong n)
+        {
+            if ((n == 1) || (n == 2))
+                return 1;
+            else
+                return Fib_recursive(n - 1) + Fib_recursive(n - 2);
+        }
+
+
     }
 }

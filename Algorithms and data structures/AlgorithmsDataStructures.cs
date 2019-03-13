@@ -7,37 +7,27 @@ namespace Algorithms_and_data_structures
     {
         static void Main()
         {
-            int firstChoice;
             string navigation;
-
-            HelloScreen();
-
+            StartScreen(); //beginning of program
             Start:
             Console.WriteLine("Type '1' if you want check some algorithms\nType '2' if you want check some examples of data structures");
             Console.Write("Your choice: ");
+            int firstChoice;
             while (!int.TryParse(Console.ReadLine(), out firstChoice) || !(firstChoice >= 1 && firstChoice <= 2))
                 Console.Write("Type '1' or '2': ");
             if(firstChoice == 1)
             {
-                //list of all algorithms
-
-                Algorithm_list:
-                Console.BackgroundColor = ConsoleColor.Gray;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n* ALGORITHMS LIST *");
-                Console.ResetColor();
-                Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort"); //here more algorithms
+                Algorithm_list: //list of all algorithms
+                AlgorithmsList();
                 Console.Write("\nPick number of algorithm: ");
                 int pickedAlgorithm;
                 while (!int.TryParse(Console.ReadLine(), out pickedAlgorithm) || !(pickedAlgorithm >= 1 && pickedAlgorithm <= 3))
                     Console.Write("Type '1' to '3': ");
                 switch (pickedAlgorithm)
                 {
-
                     case 1:
                         AgainFactorial:
                         int pickedImplementationFactorial;
-                        ulong factorialNumber;
                         Console.WriteLine("Type '1' if you want use iterative implementation of factorial\nType '2' if you want use recursive implementation of factorial");
                         Console.Write("Your choice: ");
                         while (!int.TryParse(Console.ReadLine(), out pickedImplementationFactorial) || !(pickedImplementationFactorial >= 1 && pickedImplementationFactorial <= 2))
@@ -45,10 +35,7 @@ namespace Algorithms_and_data_structures
                         switch (pickedImplementationFactorial)
                         {
                             case 1:
-                                Console.Write("\nType number: ");
-                                while (!ulong.TryParse(Console.ReadLine(), out factorialNumber))
-                                    Console.Write("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Factorial.Factorial_iterative(factorialNumber)}\n");
+                                Factorial.FactorialIterativelyMenu();
                                 TryAgainMenuFactorial:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");
@@ -69,11 +56,9 @@ namespace Algorithms_and_data_structures
                                 {
                                     goto TryAgainMenuFactorial; //navigation
                                 }
+
                             case 2:
-                                Console.Write("\nType number: ");
-                                while (!ulong.TryParse(Console.ReadLine(), out factorialNumber))
-                                    Console.Write("Wrong! Try again type number: ");
-                                Console.Write($"Factorial number is {Factorial.Factorial_recursive(factorialNumber)}\n");
+                                Factorial.FactorialRecursivelyMenu();
                                 TryAgainMenuFactorial2:
                                 Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithms list, type 'L'.\nIf you want back to main menu, type 'Q'");
                                 Console.Write("Type: ");
@@ -106,11 +91,7 @@ namespace Algorithms_and_data_structures
                         switch (pickedImplementationFibonacci)
                         {
                             case 1:
-                                ulong n;
-                                Console.Write("\nType amount of fibonacci numbers: ");
-                                while (!ulong.TryParse(Console.ReadLine(), out n))
-                                    Console.WriteLine("\nType number: ");
-                                Console.Write($"n-th number is {Fibonacci.Fib_iteratively(n)}\n");
+                                Fibonacci.FibonacciIterativelyMenu();
                                 TryAgainMenuFib:
                                 Console.WriteLine(
                                     "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
@@ -135,11 +116,7 @@ namespace Algorithms_and_data_structures
                                     goto TryAgainMenuFib; //navigation
                                 }
                             case 2:
-                                ulong m;
-                                Console.Write("\nType amount of fibonacci numbers: ");
-                                while (!ulong.TryParse(Console.ReadLine(), out m))
-                                    Console.WriteLine("\nType number: ");
-                                Console.Write($"n-th number is {Fibonacci.Fib_recursive(m)}\n");
+                                Fibonacci.FibonacciRecursivelyMenu();
                                 TryAgainMenuFib2:
                                 Console.WriteLine(
                                     "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
@@ -191,7 +168,6 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuBubble; //if wrong answer, repeat navigation menu
                         }
-                        break;
                     //case 4:
 
                 }
@@ -199,69 +175,40 @@ namespace Algorithms_and_data_structures
             }
             if (firstChoice == 2) //data structures
             {
-                int pickedStructure;
                 DataStructuresList: //list of all examples of data structures
-                Console.BackgroundColor = ConsoleColor.Gray;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\n* DATA STRUCTURES LIST *");
-                Console.ResetColor();
-                Console.WriteLine("\n1: Stack");
+                DataStructuresList();
                 Console.Write("Pick number of data structure: ");
+                int pickedStructure;
                 while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 2))
                     Console.Write("Type '1' or '2': ");
                 switch (pickedStructure)
                 {
-                        case 1:
-                           AgainStack:
-                           int value, choice;
-                           new Stack();
-                           do
-                               {
-                                    Console.Write("1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: "); //pick option
-                                    while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 4))
-                                        Console.Write("Type '1' to '4': "); //if wrong, type correct integer
-                                    if (choice == 1) //push
-                                    {
-                                            Console.Write("Enter value: ");
-                                            while (!int.TryParse(Console.ReadLine(), out value))
-                                                Console.Write("Type value: ");
-                                            Stack.Push(value); //add item
-                                    }
+                case 1:
+                     AgainStack:
+                     Stack.StackMenu();
+                     TryAgainMenuStack:
+                     Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                     Console.Write("Type: ");
+                     navigation = Console.ReadLine();
+                     if ((navigation == "R") || (navigation == "r"))
+                     {
+                         goto AgainStack; //again use stack data structure
+                     }
 
-                                    if (choice == 2) //pop
-                                    {
-                                            Stack.Pop(); //remove item
-                                    }
+                     if (navigation == "L" || navigation == "l")
+                     {
+                         goto DataStructuresList; //go to list of data structures
+                     }
 
-                                    if (choice == 3) //display
-                                    {
-                                            Stack.Display(); //view
-                                    }
-                               } while (choice != 4); //exit, end of loop
-
-                                    TryAgainMenuStack:
-                                    Console.WriteLine(
-                                        "\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
-                                    Console.Write("Type: ");
-                                    navigation = Console.ReadLine();
-                                    if ((navigation == "R") || (navigation == "r"))
-                                    {
-                                        goto AgainStack; //again use stack data structure
-                                    }
-
-                                    if (navigation == "L" || navigation == "l")
-                                    {
-                                        goto DataStructuresList; //go to list of data structures
-                                    }
-
-                                    if (navigation == "Q" || navigation == "q")
-                                    {
-                                        goto Start; //go to beginning of the program
-                                    }
-                                    else
-                                    {
-                                        goto TryAgainMenuStack; //if wrong answer, repeat navigation menu
-                                    }
+                     if (navigation == "Q" || navigation == "q")
+                     {
+                         goto Start; //go to beginning of the program
+                     }
+                     else
+                     {
+                         goto TryAgainMenuStack; //if wrong answer, repeat navigation menu
+                     }
+                    //case 2:
                 }
             }
             else
@@ -271,8 +218,23 @@ namespace Algorithms_and_data_structures
             //end
             Console.ReadKey();
         }
-
-        private static void HelloScreen()
+        private static void DataStructuresList()
+        {
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n* DATA STRUCTURES LIST *");
+            Console.ResetColor();
+            Console.WriteLine("\n1: Stack");
+        }
+        private static void AlgorithmsList()
+        {
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n* ALGORITHMS LIST *");
+            Console.ResetColor();
+            Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort"); //here more algorithms
+        }
+        private static void StartScreen()
         {
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
