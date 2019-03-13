@@ -9,14 +9,9 @@ namespace Algorithms_and_data_structures
         {
             int firstChoice;
             string navigation;
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("************** KAROL STUMSKI ***************\n");
-            Console.ResetColor();
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("* ALGORITHMS AND DATA STRUCTURES *\n");
-            Console.ResetColor();
+
+            HelloScreen();
+
             Start:
             Console.WriteLine("Type '1' if you want check some algorithms\nType '2' if you want check some examples of data structures");
             Console.Write("Your choice: ");
@@ -171,13 +166,33 @@ namespace Algorithms_and_data_structures
                         }
                         break;
                     case 3:
-                        int bubblesortamount;
-                        //AgainBubbleSort:
-                        Console.Write("\nType number: ");
-                        while (!int.TryParse(Console.ReadLine(), out bubblesortamount) || !(bubblesortamount > 0))
-                            Console.Write("Type again: ");
-                        int[] bubblesize = new int[bubblesortamount];
+                        AgainBubbleSort:
+                        BubbleSort.Bubble();
+                        TryAgainMenuBubble:
+                        Console.WriteLine(
+                            "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.Write("Type: ");
+                        navigation = Console.ReadLine();
+                        if ((navigation == "R") || (navigation == "r"))
+                        {
+                            goto AgainBubbleSort; //again use Bubble Sort
+                        }
+
+                        if (navigation == "L" || navigation == "l")
+                        {
+                            goto Algorithm_list; //go to list of algorithms
+                        }
+
+                        if (navigation == "Q" || navigation == "q")
+                        {
+                            goto Start; //go to beginning of the program
+                        }
+                        else
+                        {
+                            goto TryAgainMenuBubble; //if wrong answer, repeat navigation menu
+                        }
                         break;
+                    //case 4:
 
                 }
 
@@ -255,6 +270,18 @@ namespace Algorithms_and_data_structures
             }
             //end
             Console.ReadKey();
+        }
+
+        private static void HelloScreen()
+        {
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("************** KAROL STUMSKI ***************\n");
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("* ALGORITHMS AND DATA STRUCTURES *\n");
+            Console.ResetColor();
         }
     }
 }
