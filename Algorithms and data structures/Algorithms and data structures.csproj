@@ -27,7 +27,7 @@
     <ProductName>Algorithms and data structures</ProductName>
     <PublisherName>Karol Stumski</PublisherName>
     <SuiteName>Zenderable</SuiteName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -106,7 +106,6 @@
     <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Algorithms and data structures_TemporaryKey.pfx" />
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
