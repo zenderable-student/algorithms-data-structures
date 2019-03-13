@@ -21,8 +21,8 @@ namespace Algorithms_and_data_structures
                 AlgorithmsList();
                 Console.Write("\nPick number of algorithm: ");
                 int pickedAlgorithm;
-                while (!int.TryParse(Console.ReadLine(), out pickedAlgorithm) || !(pickedAlgorithm >= 1 && pickedAlgorithm <= 3))
-                    Console.Write("Type '1' to '3': ");
+                while (!int.TryParse(Console.ReadLine(), out pickedAlgorithm) || !(pickedAlgorithm >= 1 && pickedAlgorithm <= 4))
+                    Console.Write("Type '1' to '4': ");
                 switch (pickedAlgorithm)
                 {
                     case 1:
@@ -168,7 +168,34 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuBubble; //if wrong answer, repeat navigation menu
                         }
-                    //case 4:
+                    case 4:
+                    {
+                        AgainBinarySearch:
+                        BinarySearch.BinarySearchMenu();
+                        TryAgainMenuBinarySearch:
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.Write("Type: ");
+                        navigation = Console.ReadLine();
+                        if ((navigation == "R") || (navigation == "r"))
+                        {
+                            goto AgainBinarySearch; //again use Binary Search
+                        }
+
+                        if (navigation == "L" || navigation == "l")
+                        {
+                            goto Algorithm_list; //go to list of algorithms
+                        }
+
+                        if (navigation == "Q" || navigation == "q")
+                        {
+                            goto Start; //go to beginning of the program
+                        }
+                        else
+                        {
+                            goto TryAgainMenuBinarySearch; //if wrong answer, repeat navigation menu
+                        }
+                    }
+                        //case 5:
 
                 }
 
@@ -218,13 +245,14 @@ namespace Algorithms_and_data_structures
             //end
             Console.ReadKey();
         }
+
         private static void DataStructuresList()
         {
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* DATA STRUCTURES LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Stack");
+            Console.WriteLine("\n1: Stack"); //here more data structures
         }
         private static void AlgorithmsList()
         {
@@ -232,7 +260,7 @@ namespace Algorithms_and_data_structures
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* ALGORITHMS LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort"); //here more algorithms
+            Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort\n4: Binary search"); //here more algorithms
         }
         private static void StartScreen()
         {
