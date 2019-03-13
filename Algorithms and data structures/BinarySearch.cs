@@ -4,22 +4,18 @@ namespace Algorithms_and_data_structures
 {
     class BinarySearch
     {
-        private static int binarySearch(int[] arr, int x)
+        private static int Search(int[] array, int x)
         {
-            int l = 0, r = arr.Length - 1;
-            while (l <= r)
+            int left = 0, right = array.Length - 1;
+            while (left <= right)
             {
-                int m = l + (r - l) / 2;
-
-                // Check if x is present at mid 
-                if (arr[m] == x)
-                    return m;
-                // If x greater, ignore left half 
-                if (arr[m] < x)
-                    l = m + 1;
-                // If x is smaller, ignore right half 
-                else
-                    r = m - 1;
+                int mid = left + (right - left) / 2;
+                if (array[mid] == x) //check if x is at mid
+                    return mid;
+                if (array[mid] < x) //if x is bigger, ignore left half
+                    left = mid + 1;
+                else //if x is smaller, ignore right half
+                    right = mid - 1;
             }
             return -1; //element not found
         }
@@ -29,20 +25,20 @@ namespace Algorithms_and_data_structures
             Console.Write("Type amount of your numbers: ");
             while (!int.TryParse(Console.ReadLine(), out binarySearchArraySize) || !(binarySearchArraySize > 0))
                 Console.Write("Something wrong! Type again: ");
-            int[] arr = new int[binarySearchArraySize];
-            for (int i = 0; i <= arr.Length - 1; i++)
+            int[] array = new int[binarySearchArraySize];
+            for (int i = 0; i <= array.Length - 1; i++)
             {
                 Console.Write($"Type {i + 1} number: ");
                 int number;
                 while (!int.TryParse(Console.ReadLine(), out number))
                     Console.Write($"Something wrong! Type again {i + 1} number: ");
-                arr[i] = number;
+                array[i] = number;
             }
-            int x;
+            int numToSearch;
             Console.Write("What number would you like to search? Type: ");
-            while (!int.TryParse(Console.ReadLine(), out x))
+            while (!int.TryParse(Console.ReadLine(), out numToSearch))
                 Console.Write("Something wrong! Type again: ");
-            int result = BinarySearch.binarySearch(arr, x);
+            int result = Search(array, numToSearch);
             if (result == -1)
                 Console.WriteLine("Element not present");
             else

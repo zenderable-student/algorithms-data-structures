@@ -70,7 +70,6 @@ namespace Algorithms_and_data_structures
             else
                 _top--; //remove from top
         }
-
         private static void Display() //display - to view output
         {
             if(_top == -1) //because array is counted from 0, so if size is 0 or it's empty there is nothing to display

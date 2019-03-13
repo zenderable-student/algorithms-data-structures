@@ -235,7 +235,32 @@ namespace Algorithms_and_data_structures
                      {
                          goto TryAgainMenuStack; //if wrong answer, repeat navigation menu
                      }
-                    //case 2:
+                case 2:
+                AgainArray:
+                Array.ArrayMenu();
+                TryAgainMenuArray:
+                Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                Console.Write("Type: ");
+                navigation = Console.ReadLine();
+                if ((navigation == "R") || (navigation == "r"))
+                {
+                    goto AgainArray; //again use stack data structure
+                }
+
+                if (navigation == "L" || navigation == "l")
+                {
+                    goto DataStructuresList; //go to list of data structures
+                }
+
+                if (navigation == "Q" || navigation == "q")
+                {
+                    goto Start; //go to beginning of the program
+                }
+                else
+                {
+                    goto TryAgainMenuArray; //if wrong answer, repeat navigation menu
+                }
+                //case 3:
                 }
             }
             else
@@ -252,7 +277,7 @@ namespace Algorithms_and_data_structures
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* DATA STRUCTURES LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Stack"); //here more data structures
+            Console.WriteLine("\n1: Stack\n2: Array"); //here more data structures
         }
         private static void AlgorithmsList()
         {
