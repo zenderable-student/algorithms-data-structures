@@ -22,7 +22,7 @@ namespace Algorithms_and_data_structures
         }
         private static int Sorting(int[] quicksize, int left, int right)
         {
-            int pivot = quicksize[left]; //pivot is chose element in sorted array (it can be left, mid, right, first, last or random)
+            int pivot = quicksize[left]; //pivot is chosen element in sorted array (it can be left, mid, right, first, last or random)
             while (true)
             {
                 while (quicksize[left] < pivot) //until pivot is bigger than left side, left++
@@ -71,6 +71,7 @@ namespace Algorithms_and_data_structures
                 Console.Write(item + " ");
             }
             Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }

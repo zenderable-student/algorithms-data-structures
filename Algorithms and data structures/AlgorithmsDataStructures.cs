@@ -21,8 +21,8 @@ namespace Algorithms_and_data_structures
                 AlgorithmsList();
                 Console.Write("\nPick number of algorithm: ");
                 int pickedAlgorithm;
-                while (!int.TryParse(Console.ReadLine(), out pickedAlgorithm) || !(pickedAlgorithm >= 1 && pickedAlgorithm <= 5))
-                    Console.Write("Type '1' to '5': ");
+                while (!int.TryParse(Console.ReadLine(), out pickedAlgorithm) || !(pickedAlgorithm >= 1 && pickedAlgorithm <= 6))
+                    Console.Write("Type '1' to '6': ");
                 switch (pickedAlgorithm)
                 {
                     case 1: //Factorial
@@ -145,8 +145,7 @@ namespace Algorithms_and_data_structures
                         AgainBubbleSort:
                         BubbleSort.Bubble();
                         TryAgainMenuBubble:
-                        Console.WriteLine(
-                            "\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");
                         navigation = Console.ReadLine();
                         if ((navigation == "R") || (navigation == "r"))
@@ -217,7 +216,32 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuQuickSort; //if wrong answer, repeat navigation menu
                         }
-                        //case 6:
+                        case 6:
+                        AgainInsertionSort:
+                        InsertionSort.Sort();
+                        TryAgainMenuInsertionSort:
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.Write("Type: ");
+                        navigation = Console.ReadLine();
+                        if (navigation == "R" || navigation == "r")
+                        {
+                            goto AgainInsertionSort; //again use Insertion Sort
+                        }
+
+                        if (navigation == "L" || navigation == "l")
+                        {
+                            goto Algorithm_list; //go to list of algorithms
+                        }
+
+                        if (navigation == "Q" || navigation == "q")
+                        {
+                            goto Start; //go to beginning of the program
+                        }
+                        else
+                        {
+                            goto TryAgainMenuInsertionSort; //if wrong answer, repeat navigation menu
+                        }
+                        //case 7:
                 }
             }
             if (firstChoice == 2) //data structures
@@ -304,7 +328,7 @@ namespace Algorithms_and_data_structures
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* ALGORITHMS LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort\n4: Binary search\n5: Quick sort"); //here more algorithms
+            Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort\n4: Binary search\n5: Quick sort\n6: Insertion sort"); //here more algorithms
         }
         private static void StartScreen()
         {

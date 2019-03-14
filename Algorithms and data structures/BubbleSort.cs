@@ -12,7 +12,7 @@ namespace Algorithms_and_data_structures
             int[] bubblesize = new int[bubblesortamount];
             for (int i = 0; i <= bubblesize.Length - 1; i++)
             {
-                Console.Write($"Type {i + 1} number: ");
+                Console.Write($"Type your {i + 1} number: ");
                 int number;
                 while (!int.TryParse(Console.ReadLine(), out number))
                     Console.Write($"Something wrong! Type again {i + 1} number: ");
@@ -35,11 +35,10 @@ namespace Algorithms_and_data_structures
             Console.Write("Sorted array: ");
             foreach (var sorted in bubblesize)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(sorted + " ");
-                Console.ResetColor();
             }
             Console.ResetColor();
+            Console.WriteLine();
         }
     }
 }
