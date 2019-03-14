@@ -2,7 +2,7 @@
 
 namespace Algorithms_and_data_structures
 {
-    class BinarySearch
+    static class BinarySearch
     {
         private static int Search(int[] array, int x)
         {
@@ -21,28 +21,37 @@ namespace Algorithms_and_data_structures
         }
         public static void BinarySearchMenu()
         {
-            int binarySearchArraySize;
+            int binarySearchArraySize, repeat = 0;
             Console.Write("Type amount of your numbers: ");
             while (!int.TryParse(Console.ReadLine(), out binarySearchArraySize) || !(binarySearchArraySize > 0))
                 Console.Write("Something wrong! Type again: ");
             int[] array = new int[binarySearchArraySize];
             for (int i = 0; i <= array.Length - 1; i++)
             {
-                Console.Write($"Type {i + 1} number: ");
+                Console.Write($"Type your {i + 1} number (index {i}): ");
                 int number;
                 while (!int.TryParse(Console.ReadLine(), out number))
                     Console.Write($"Something wrong! Type again {i + 1} number: ");
                 array[i] = number;
             }
-            int numToSearch;
-            Console.Write("What number would you like to search? Type: ");
-            while (!int.TryParse(Console.ReadLine(), out numToSearch))
-                Console.Write("Something wrong! Type again: ");
-            int result = Search(array, numToSearch);
-            if (result == -1)
-                Console.WriteLine("Element not present");
-            else
-                Console.WriteLine("Element found at " + "index " + result);
+            while (repeat != 1)
+            {
+                int numToSearch;
+                Console.Write("What number would you like to search? Type: ");
+                while (!int.TryParse(Console.ReadLine(), out numToSearch))
+                    Console.Write("Something wrong! Type again: ");
+                int result = Search(array, numToSearch);
+                if (result == -1)
+                    Console.WriteLine("Element not present");
+                else
+                    Console.WriteLine("Element found at " + "index " + result);
+                Console.Write("Do you want search another number? Type 'Y' (yes) or 'N' (no): ");
+                var question = Console.ReadLine();
+                if (question == "N" || question == "n" || question == "no" || question == "NO")
+                {
+                    repeat = 1;
+                }
+            }
         }
     }
 }
