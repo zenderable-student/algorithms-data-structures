@@ -7,7 +7,7 @@ namespace Algorithms_and_data_structures
         {
             if (left < right)
             {
-                int pivot = Partition(quicksize, left, right);
+                int pivot = Sorting(quicksize, left, right);
 
                 if (pivot > 1)
                 {
@@ -20,30 +20,31 @@ namespace Algorithms_and_data_structures
                 }
             }
         }
-        private static int Partition(int[] quicksize, int left, int right)
+        private static int Sorting(int[] quicksize, int left, int right)
         {
-            int pivot = quicksize[left];
+            int pivot = quicksize[left]; //pivot is chose element in sorted array (it can be left, mid, right, first, last or random)
             while (true)
             {
-                while (quicksize[left] < pivot)
+                while (quicksize[left] < pivot) //until pivot is bigger than left side, left++
                 {
                     left++;
                 }
-                while (quicksize[right] > pivot)
+                while (quicksize[right] > pivot) //until right side is bigger than pivot, right--
                 {
                     right--;
                 }
                 if (left < right)
                 {
-                    if (quicksize[left] == quicksize[right]) return right;
-
                     int temp = quicksize[left];
-                    quicksize[left] = quicksize[right];
+                    quicksize[left] = quicksize[right]; //swap
                     quicksize[right] = temp;
+
+                    if (quicksize[left] == quicksize[right]) //if same numbers
+                        left++;
                 }
                 else
                 {
-                    return right;
+                    return right; //if conditions are not met then return right side
                 }
             }
         }
@@ -62,12 +63,14 @@ namespace Algorithms_and_data_structures
                     Console.Write($"Something wrong! Type again {i + 1} number: ");
                 quicksize[i] = number;
             }
-            Quick_Sort(quicksize, 0, quicksize.Length - 1);
+            Quick_Sort(quicksize, 0, quicksize.Length - 1); //left 0 and right is length of array - 1
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("Sorted array: ");
             foreach (var item in quicksize)
             {
-                Console.Write(" " + item);
+                Console.Write(item + " ");
             }
+            Console.ResetColor();
         }
     }
 }

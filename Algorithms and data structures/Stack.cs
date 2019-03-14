@@ -51,7 +51,9 @@ namespace Algorithms_and_data_structures
             //check it's full or not
             if (_top == X-1) //here Rozmiar() - 1
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nStack is FULL (or overflow)");
+                Console.ResetColor();
             }
             else
             {
@@ -65,7 +67,9 @@ namespace Algorithms_and_data_structures
             //check it's empty or not
             if (_top == -1) //because array is counted from 0
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nStack is EMPTY (or underflow)");
+                Console.ResetColor();
             }
             else
                 _top--; //remove from top
@@ -74,15 +78,19 @@ namespace Algorithms_and_data_structures
         {
             if(_top == -1) //because array is counted from 0, so if size is 0 or it's empty there is nothing to display
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nNothing to display!");
+                Console.ResetColor();
             }
             else
             {
                 Console.WriteLine("\nThis is your stack: "); //show from top to bottom
+                Console.ForegroundColor = ConsoleColor.Red;
                 for (int i = 0; i <= _top; i++)
                 {
                     Console.WriteLine(TabStack[i]);
                 }
+                Console.ResetColor();
             }
         }
     }

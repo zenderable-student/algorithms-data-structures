@@ -31,11 +31,15 @@ namespace Algorithms_and_data_structures
                     }
                 }
             }
-            Console.Write("Sorted: ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Sorted array: ");
             foreach (var sorted in bubblesize)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(sorted + " ");
+                Console.ResetColor();
             }
+            Console.ResetColor();
         }
     }
 }

@@ -42,9 +42,17 @@ namespace Algorithms_and_data_structures
                     Console.Write("Something wrong! Type again: ");
                 int result = Search(array, numToSearch);
                 if (result == -1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Element not present");
+                    Console.ResetColor();
+                }
                 else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Element found at " + "index " + result);
+                    Console.ResetColor();
+                }
                 Console.Write("Do you want search another number? Type 'Y' (yes) or 'N' (no): ");
                 var question = Console.ReadLine();
                 if (question == "N" || question == "n" || question == "no" || question == "NO")

@@ -9,7 +9,9 @@ namespace Algorithms_and_data_structures
             Console.Write("\nType number: ");
             while (!ulong.TryParse(Console.ReadLine(), out factorialNumber))
                 Console.Write("Wrong! Try again type number: ");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"Factorial number is {Factorial_iterative(factorialNumber)}\n");
+            Console.ResetColor();
         }
         private static ulong Factorial_iterative(ulong n)
         {
@@ -27,7 +29,9 @@ namespace Algorithms_and_data_structures
             Console.Write("\nType number: ");
             while (!ulong.TryParse(Console.ReadLine(), out factorialNumber))
                 Console.Write("Wrong! Try again type number: ");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"Factorial number is {Factorial_recursive(factorialNumber)}\n");
+            Console.ResetColor();
         }
 
         private static ulong Factorial_recursive(ulong i)

@@ -9,7 +9,9 @@ namespace Algorithms_and_data_structures
             Console.Write("\nType amount of fibonacci numbers: ");
             while (!ulong.TryParse(Console.ReadLine(), out n))
                 Console.WriteLine("\nType number: ");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"n-th number is {Fib_iterative(n)}\n");
+            Console.ResetColor();
         }
         private static ulong Fib_iterative(ulong m)
         {
@@ -36,7 +38,9 @@ namespace Algorithms_and_data_structures
             Console.Write("\nType amount of fibonacci numbers: ");
             while (!ulong.TryParse(Console.ReadLine(), out m))
                 Console.WriteLine("\nType number: ");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.Write($"n-th number is {Fib_recursive(m)}\n");
+            Console.ResetColor();
         }
         private static ulong Fib_recursive(ulong n)
         {
