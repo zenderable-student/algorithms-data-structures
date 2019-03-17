@@ -47,13 +47,14 @@ namespace Algorithms_and_data_structures
                 }
                 if (choice == 3)
                 {
-
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Your array: ");
                     foreach (var index in array)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(index + " ");
-                        Console.ResetColor();
                     }
+                    Console.ResetColor();
+                    Console.WriteLine();
                 }
             } while (choice != 4);
         }

@@ -2,7 +2,7 @@
 
 namespace Algorithms_and_data_structures
 {
-    static class BinarySearch
+    internal static class BinarySearch
     {
         private static int Search(int[] array, int x)
         {

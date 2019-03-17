@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Algorithms_and_data_structures
 {
-    static class InsertionSort
+    internal static class InsertionSort
     {
         public static void Sort()
         {
