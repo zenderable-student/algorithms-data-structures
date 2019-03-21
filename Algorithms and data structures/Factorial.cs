@@ -3,6 +3,7 @@ namespace Algorithms_and_data_structures
 {
     internal static class Factorial
     {
+        private static int stack = -1;
         public static void FactorialIterativelyMenu()
         {
             ulong factorialNumber;
@@ -10,6 +11,7 @@ namespace Algorithms_and_data_structures
             while (!ulong.TryParse(Console.ReadLine(), out factorialNumber))
                 Console.Write("Wrong! Try again type number: ");
             Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(stack++);
             Console.Write($"Factorial number is {Factorial_iterative(factorialNumber)}\n");
             Console.ResetColor();
         }

@@ -3,7 +3,7 @@ namespace Algorithms_and_data_structures
 {
     internal static class QuickSort
     {
-        private static void Quick_Sort(int[] quicksize, int left, int right)
+        private static void Quick_Sort(int[] quicksize, int left, int right) //pick pivot
         {
             if (left < right)
             {

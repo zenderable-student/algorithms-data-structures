@@ -14,13 +14,8 @@ namespace Algorithms_and_data_structures
             int[] array = new int[arraySize];
             for (int i = 0; i <= array.Length - 1; i++)
             {
-                Console.Write($"Type your {i + 1} number (index {i}): ");
-                int number;
-                while (!int.TryParse(Console.ReadLine(), out number))
-                    Console.Write($"Something wrong! Type again {i + 1} number: ");
-                array[i] = number;
+                array[i] = 0;
             }
-
             do
             {
                 Console.Write("\n1. ADD VALUE\n2. REMOVE VALUE\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: "); //pick option
@@ -43,15 +38,17 @@ namespace Algorithms_and_data_structures
                     Console.Write("Type number of index to remove: ");
                     while (!int.TryParse(Console.ReadLine(), out indexToRemove) || !(indexToRemove >= 0))
                         Console.Write("Something wrong! Type again: ");
-                    array = array.Where((source, index) => index != indexToRemove).ToArray(); //LINQ
+                    array[indexToRemove] = 0;
                 }
                 if (choice == 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Your array: ");
+                    Console.WriteLine("Your array: ");
+                    int i=0;
                     foreach (var index in array)
                     {
-                        Console.Write(index + " ");
+                            Console.WriteLine($"Index {i}: " + index);
+                            i++;
                     }
                     Console.ResetColor();
                     Console.WriteLine();
