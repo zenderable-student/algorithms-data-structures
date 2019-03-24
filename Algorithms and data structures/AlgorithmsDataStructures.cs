@@ -275,8 +275,8 @@ namespace Algorithms_and_data_structures
                 DataStructuresList();
                 Console.Write("Pick number of data structure: ");
                 int pickedStructure;
-                while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 2))
-                    Console.Write("Type '1' or '2': ");
+                while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 3))
+                    Console.Write("Type '1' to '3': ");
                 switch (pickedStructure)
                 {
                 case 1:
@@ -329,7 +329,32 @@ namespace Algorithms_and_data_structures
                 {
                     goto TryAgainMenuArray; //if wrong answer, repeat navigation menu
                 }
-                //case 3:
+                case 3:
+                AgainList:
+                List.ListMenu();
+                TryAgainListArray:
+                Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                Console.Write("Type: ");
+                navigation = Console.ReadLine();
+                if ((navigation == "R") || (navigation == "r"))
+                {
+                    goto AgainList; //again use list data structure
+                }
+
+                if (navigation == "L" || navigation == "l")
+                {
+                    goto DataStructuresList; //go to list of data structures
+                }
+
+                if (navigation == "Q" || navigation == "q")
+                {
+                    goto Start; //go to beginning of the program
+                }
+                else
+                {
+                    goto TryAgainListArray; //if wrong answer, repeat navigation menu
+                }
+                //case 4:
                 }
             }
             else
@@ -345,7 +370,7 @@ namespace Algorithms_and_data_structures
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* DATA STRUCTURES LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Stack\n2: Array"); //here more data structures
+            Console.WriteLine("\n1: Stack\n2: Array\n3: List"); //here more data structures
         }
         private static void AlgorithmsList()
         {
