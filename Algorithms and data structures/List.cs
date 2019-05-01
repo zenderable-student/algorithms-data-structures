@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms_and_data_structures
 {
-    static class List
+    internal static class List
     {
         public static void ListMenu()
         {

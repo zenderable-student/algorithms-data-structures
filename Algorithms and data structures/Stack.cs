@@ -20,9 +20,9 @@ namespace Algorithms_and_data_structures
             int choice;
             do
             {
-                Console.Write("\n1. PUSH\n2. POP\n3. DISPLAY\n4. EXIT TO MENU\nYour choice: "); //pick option
-                while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 4))
-                    Console.Write("Type '1' to '4': "); //if wrong, type correct integer
+                Console.Write("\n1. PUSH\n2. POP\n3. PEAK\n4. DISPLAY\n5. EXIT TO MENU\nYour choice: "); //pick option
+                while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 5))
+                    Console.Write("Type '1' to '5': "); //if wrong, type correct integer
                 if (choice == 1) //push
                 {
                     Console.Write("Enter value: ");
@@ -35,11 +35,15 @@ namespace Algorithms_and_data_structures
                 {
                     Pop(); //remove item
                 }
-                if (choice == 3) //display
+                if (choice == 3) //peak
+                {
+                    Peak(); //display top item
+                }
+                if (choice == 4) //display
                 {
                     Display(); //view
                 }
-            } while (choice != 4); //exit, end of loop
+            } while (choice != 5); //exit, end of loop
         }
         private static void Push(int value) //push - to add item
         {
@@ -67,6 +71,23 @@ namespace Algorithms_and_data_structures
             }
             else
                 _top--; //remove from top
+        }
+
+        private static void Peak() //peak - to display item on top
+        {
+            //check it's empty or not
+            if (_top == -1) //because array is counted from 0
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nStack is EMPTY (or underflow)");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("On top is: " + TabStack[_top]);
+                Console.ResetColor();
+            }
         }
         private static void Display() //display - to view output
         {
