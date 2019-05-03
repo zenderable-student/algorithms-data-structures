@@ -4,6 +4,7 @@ namespace Algorithms_and_data_structures
 {
     internal static class Array
     {
+
         public static void ArrayMenu()
         {
             int arraySize, choice;
@@ -17,10 +18,10 @@ namespace Algorithms_and_data_structures
             }
             do
             {
-                Console.Write("\n1. ADD VALUE\n2. REMOVE VALUE\n3. DISPLAY\n4. EXIT TO MENU\n\nYour choice: "); //pick option
-                while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 4))
+                Console.Write("\n1. ADD VALUE\n2. REMOVE VALUE\n3. FILL WITH RANDOM VALUES\n4. DISPLAY\n5. EXIT TO MENU\n\nYour choice: "); //pick option
+                while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 5))
                     Console.Write("Type '1' to '4': "); //if wrong, type correct integer
-                if (choice == 1)
+                if (choice == 1) //add value
                 {
                     int i, j;
                     Console.Write("Type number of index: ");
@@ -31,7 +32,7 @@ namespace Algorithms_and_data_structures
                         Console.Write("Something wrong! Type again: ");
                     array[i] = j;
                 }
-                if (choice == 2)
+                if (choice == 2) //remove value
                 {
                     int indexToRemove;
                     Console.Write("Type number of index to remove: ");
@@ -39,7 +40,15 @@ namespace Algorithms_and_data_structures
                         Console.Write("Something wrong! Type again: ");
                     array[indexToRemove] = 0;
                 }
-                if (choice == 3)
+                if (choice == 3) //fill with random numbers
+                {
+                    Random random = new Random();
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        array[i] = random.Next(2000);
+                    }
+                }
+                if (choice == 4) //display all
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Your array: ");
@@ -52,7 +61,7 @@ namespace Algorithms_and_data_structures
                     Console.ResetColor();
                     Console.WriteLine();
                 }
-            } while (choice != 4);
+            } while (choice != 5);
         }
     }
 }
