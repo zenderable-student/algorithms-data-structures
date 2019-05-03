@@ -4,7 +4,6 @@ namespace Algorithms_and_data_structures
 {
     internal static class Array
     {
-
         public static void ArrayMenu()
         {
             int arraySize, choice;

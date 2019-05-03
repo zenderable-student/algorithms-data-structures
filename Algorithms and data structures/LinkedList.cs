@@ -1,43 +1,61 @@
-﻿namespace Algorithms_and_data_structures
+﻿using System;
+namespace Algorithms_and_data_structures
 {
-    internal class Node
+    class LinkedListClass
     {
-        internal int Data;
-        internal Node Next;
-        public Node(int d)
+        internal class Node //class definition
         {
-            Data = d;
-            Next = null;
+            internal int data;
+            internal Node next;
+            public Node(int d)
+            {
+                data = d;
+                next = null;
+            }
         }
-    }
-    internal class LinkedList
-    {
-        internal Node head;
-        internal void InsertFront(LinkedList singlyList, int newData)
+        internal class SingleLinkedList
         {
-            Node new_node = new Node(newData);
-            new_node.Next = singlyList.head;
-            singlyList.head = new_node;
+            internal Node head;
         }
-        internal void InsertLast(LinkedList singlyList, int new_data)
+        internal void InsertFront(SingleLinkedList singlyList, int new_data) //insert data at front of the Linked List 
         {
             Node new_node = new Node(new_data);
-            if (singlyList.head == null)
-            {
-                singlyList.head = new_node;
-                return;
-            }
-            Node lastNode = GetLastNode(singlyList);
-            lastNode.Next = new_node;
+            new_node.next = singlyList.head;
+            singlyList.head = new_node;
         }
-        internal Node GetLastNode(LinkedList singlyList)
+        internal void DeleteNodebyKey(SingleLinkedList singlyList, int key)
         {
             Node temp = singlyList.head;
-            while (temp.Next != null)
+            Node prev = null;
+            if (temp != null && temp.data == key)
             {
-                temp = temp.Next;
+                singlyList.head = temp.next;
+                return;
             }
-            return temp;
+            while (temp != null && temp.data != key)
+            {
+                prev = temp;
+                temp = temp.next;
+            }
+            if (temp == null)
+            {
+                return;
+            }
+            prev.next = temp.next;
+        }
+        public void ReverseLinkedList(SingleLinkedList singlyList)
+        {
+            Node prev = null;
+            Node current = singlyList.head;
+            Node temp = null;
+            while (current != null)
+            {
+                temp = current.next;
+                current.next = prev;
+                prev = current;
+                current = temp;
+            }
+            singlyList.head = prev;
         }
     }
 }
