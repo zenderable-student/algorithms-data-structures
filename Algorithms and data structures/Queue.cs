@@ -4,7 +4,7 @@ namespace Algorithms_and_data_structures
 {
     class QueueClass
     {
-        public class Node //using linkedlist
+        public class Node //using linked list
         {
             public int Data { get; set; }
             public Node Next { get; set; }
@@ -19,7 +19,7 @@ namespace Algorithms_and_data_structures
             private Node _tail;
             private int _count = 0;
             public Queue() { }
-            public void Enqueue(int data)
+            public void Enqueue(int data) //adds an item into the queue.
             {
                 Node _newNode = new Node(data);
                 if (_head == null)
@@ -34,7 +34,7 @@ namespace Algorithms_and_data_structures
                 }
                 _count++;
             }
-            public int Dequeue()
+            public int Dequeue() //removes nad returns an item from the beginning of the queue.
             {
                 if (_head == null)
                 {
@@ -45,7 +45,7 @@ namespace Algorithms_and_data_structures
                 _head = _head.Next;
                 return _result;
             }
-            public int Count
+            public int Count //returns the total count of elements in the Queue.
             {
                 get
                 {

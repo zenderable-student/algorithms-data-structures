@@ -275,8 +275,8 @@ namespace Algorithms_and_data_structures
                 DataStructuresList();
                 Console.Write("Pick number of data structure: ");
                 int pickedStructure;
-                while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 3))
-                    Console.Write("Type '1' to '3': ");
+                while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 4))
+                    Console.Write("Type '1' to '4': ");
                 switch (pickedStructure)
                 {
                 case 1:
@@ -356,7 +356,7 @@ namespace Algorithms_and_data_structures
                 }
                 case 4:
                 AgainLinkedList:
-                //LinkedList.Node();
+                LinkedListClass.LinkedListMenu();
                 TryAgainLinkedListArray:
                 Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
                 Console.Write("Type: ");
@@ -395,7 +395,7 @@ namespace Algorithms_and_data_structures
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* DATA STRUCTURES LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Stack\n2: Array\n3: List"); //here more data structures
+            Console.WriteLine("\n1: Stack\n2: Array\n3: List\n4: LinkedList"); //here more data structures
         }
         private static void AlgorithmsList()
         {
