@@ -88,14 +88,11 @@
   <ItemGroup>
     <Compile Include="AlgorithmsDataStructures.cs" />
     <Compile Include="Array.cs" />
-    <Compile Include="AssociativeArray.cs" />
     <Compile Include="BinarySearch.cs" />
     <Compile Include="BinaryTree.cs" />
     <Compile Include="BubbleSort.cs" />
     <Compile Include="Factorial.cs" />
     <Compile Include="Fibonacci.cs" />
-    <Compile Include="Graph.cs" />
-    <Compile Include="Heap.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="List.cs" />

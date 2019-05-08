@@ -274,8 +274,8 @@ namespace Algorithms_and_data_structures
                 DataStructuresList();
                 Console.Write("Pick number of data structure: ");
                 int pickedStructure;
-                while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 4))
-                    Console.Write("Type '1' to '4': ");
+                while (!int.TryParse(Console.ReadLine(), out pickedStructure) || !(pickedStructure >= 1 && pickedStructure <= 6))
+                    Console.Write("Type '1' to '6': ");
                 switch (pickedStructure)
                 {
                 case 1: //Stack
@@ -362,7 +362,7 @@ namespace Algorithms_and_data_structures
                 navigation = Console.ReadLine();
                 if ((navigation == "R") || (navigation == "r"))
                 {
-                    goto AgainLinkedList; //again use list data structure
+                    goto AgainLinkedList; //again use linked list data structure
                 }
 
                 if (navigation == "L" || navigation == "l")
@@ -378,15 +378,63 @@ namespace Algorithms_and_data_structures
                 {
                     goto TryAgainLinkedListArray; //if wrong answer, repeat navigation menu
                 }
-                    //case 5:
+                case 5: //Queue
+                    AgainQueue:
+                    //Queue.QueueMenu();
+                    TryAgainQueue:
+                    Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                    Console.Write("Type: ");
+                    navigation = Console.ReadLine();
+                    if ((navigation == "R") || (navigation == "r"))
+                    {
+                        goto AgainQueue; //again use queue data structure
+                    }
+
+                    if (navigation == "L" || navigation == "l")
+                    {
+                        goto DataStructuresList; //go to list of data structures
+                    }
+
+                    if (navigation == "Q" || navigation == "q")
+                    {
+                        goto Start; //go to beginning of the program
+                    }
+                    else
+                    {
+                        goto TryAgainQueue; //if wrong answer, repeat navigation menu
+                    }
+                case 6: //Binary Tree
+                    AgainBinaryTree:
+                    //BinaryTree.TreeMenu();
+                    TryAgainBinaryTree:
+                    Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                    Console.Write("Type: ");
+                    navigation = Console.ReadLine();
+                    if ((navigation == "R") || (navigation == "r"))
+                    {
+                        goto AgainBinaryTree; //again use binary tree data structure
+                    }
+
+                    if (navigation == "L" || navigation == "l")
+                    {
+                        goto DataStructuresList; //go to list of data structures
+                    }
+
+                    if (navigation == "Q" || navigation == "q")
+                    {
+                        goto Start; //go to beginning of the program
+                    }
+                    else
+                    {
+                        goto TryAgainBinaryTree; //if wrong answer, repeat navigation menu
+                    }
                 }
             }
             else
             {
                 goto Start; //if wrong choice, repeat 
             }
-            //end
-            Console.ReadKey();
+            Console.ReadKey(); //end of program
         }
         private static void DataStructuresList()
         {
@@ -394,7 +442,7 @@ namespace Algorithms_and_data_structures
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n* DATA STRUCTURES LIST *");
             Console.ResetColor();
-            Console.WriteLine("\n1: Stack\n2: Array\n3: List\n4: LinkedList"); //here more data structures
+            Console.WriteLine("\n1: Stack\n2: Array\n3: List\n4: LinkedList\n5: Queue\n6: Binary Tree"); //here more data structures
         }
         private static void AlgorithmsList()
         {
