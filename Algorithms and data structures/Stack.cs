@@ -41,6 +41,7 @@ namespace Algorithms_and_data_structures
                 }
                 if (choice == 4) //display
                 {
+                    
                     Display(); //view
                 }
             } while (choice != 5); //exit, end of loop
