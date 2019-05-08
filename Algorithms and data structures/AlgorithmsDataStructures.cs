@@ -141,7 +141,7 @@ namespace Algorithms_and_data_structures
                                 }
                         }
                         break;
-                    case 3: //Bubble Sort
+                    case 3: //Bubble sort
                         AgainBubbleSort:
                         BubbleSort.Bubble();
                         TryAgainMenuBubble:
@@ -166,7 +166,7 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuBubble; //if wrong answer, repeat navigation menu
                         }
-                    case 4: //Binary Search
+                    case 4: //Binary search
                         AgainBinarySearch:
                         BinarySearch.BinarySearchMenu();
                         TryAgainMenuBinarySearch:
@@ -191,7 +191,7 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuBinarySearch; //if wrong answer, repeat navigation menu
                         }
-                        case 5: //Quick Sort
+                        case 5: //Quick sort
                         AgainQuickSort:
                         QuickSort.QuickSortMenu();
                         TryAgainMenuQuickSort:
@@ -216,7 +216,7 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuQuickSort; //if wrong answer, repeat navigation menu
                         }
-                        case 6:
+                        case 6: //Insertion sort
                         AgainInsertionSort:
                         InsertionSort.Sort();
                         TryAgainMenuInsertionSort:
@@ -241,7 +241,7 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuInsertionSort; //if wrong answer, repeat navigation menu
                         }
-                        case 7:
+                        case 7: //Merge sort
                         AgainMergeSort:
                         MergeSort.Merge();
                         TryAgainMenuMergeSort:
@@ -266,7 +266,6 @@ namespace Algorithms_and_data_structures
                         {
                             goto TryAgainMenuMergeSort; //if wrong answer, repeat navigation menu
                         }
-                        //case 8:
                 }
             }
             if (firstChoice == 2) //data structures
@@ -279,7 +278,7 @@ namespace Algorithms_and_data_structures
                     Console.Write("Type '1' to '4': ");
                 switch (pickedStructure)
                 {
-                case 1:
+                case 1: //Stack
                      AgainStack:
                      Stack.StackMenu();
                      TryAgainMenuStack:
@@ -304,7 +303,7 @@ namespace Algorithms_and_data_structures
                      {
                          goto TryAgainMenuStack; //if wrong answer, repeat navigation menu
                      }
-                case 2:
+                case 2: //Array
                 AgainArray:
                 Array.ArrayMenu();
                 TryAgainMenuArray:
@@ -329,7 +328,7 @@ namespace Algorithms_and_data_structures
                 {
                     goto TryAgainMenuArray; //if wrong answer, repeat navigation menu
                 }
-                case 3:
+                case 3: //List
                 AgainList:
                 List.ListMenu();
                 TryAgainListArray:
@@ -354,9 +353,9 @@ namespace Algorithms_and_data_structures
                 {
                     goto TryAgainListArray; //if wrong answer, repeat navigation menu
                 }
-                case 4:
+                case 4: //Linked list
                 AgainLinkedList:
-                LinkedListClass.LinkedListMenu();
+                LinkedList.LinkedListMenu();
                 TryAgainLinkedListArray:
                 Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
                 Console.Write("Type: ");
