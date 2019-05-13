@@ -10,7 +10,7 @@ namespace Algorithms_and_data_structures
             Console.Write("Type amount of your numbers: ");
             while (!int.TryParse(Console.ReadLine(), out arraySize) || !(arraySize > 0))
                 Console.Write("Something wrong! Type again: ");
-            int[] array = new int[arraySize];
+            int[] array = new int[arraySize]; //size of the array
             for (int i = 0; i <= array.Length - 1; i++)
             {
                 array[i] = 0;

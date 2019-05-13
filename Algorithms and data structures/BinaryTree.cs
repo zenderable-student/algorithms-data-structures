@@ -3,53 +3,52 @@ namespace Algorithms_and_data_structures
 {
     class TreeNode
     {
-        public int data;
-        public TreeNode left { get; set; }
-        public TreeNode right { get; set; }
+        public int Data;
+        public TreeNode Left { get; set; }
+        public TreeNode Right { get; set; }
         public TreeNode(int data)
         {
-            this.data = data;
+            Data = data;
         }
     }
     class Tree
     {
-        public TreeNode
-            root; //this is public so we can access this tree node from main when we display our tree using the recursive function
-        public Tree()
+        private TreeNode
+            _root; //this is public so we can access this tree node from main when we display our tree using the recursive function
+        private Tree()
         {
-            root = null;
+            _root = null;
         }
-        public void insert(int data)
+        private void Insert(int data)
         {
             TreeNode newItem = new TreeNode(data); //our new node to insert into the tree
-            if (root == null) //if there is no root, make the first new node the root
+            if (_root == null) //if there is no root, make the first new node the root
             {
-                root = newItem;
+                _root = newItem;
             }
             else
             {
                 TreeNode
-                    current = root; //we make a new tree node called current and assign to the root, so we start iteration from there
+                    current = _root; //we make a new tree node called current and assign to the root, so we start iteration from there
 
-                TreeNode parent = null;
                 while (current != null) //while the current is not equal to null (since we have it equal to root)
                 {
-                    parent = current; //set the parent node to point to current (which the root tree node, which will be the parent to the new item tree node)
+                    var parent = current;
 
-                    if (data < current.data) //if new item (data) is less than the current node's data, link it to the left node
+                    if (data < current.Data) //if new item (data) is less than the current node's data, link it to the left node
                     {
-                        current = current.left;
+                        current = current.Left;
                         if (current == null) //if the current.left is null
                         {
-                            parent.left = newItem; //make parent.left store the new node
+                            parent.Left = newItem; //make parent.left store the new node
                         }
                     }
                     else
                     {
-                        current = current.right;
+                        current = current.Right;
                         if (current == null)
                         {
-                            parent.right = newItem;
+                            parent.Right = newItem;
                         }
                     }
                 }
@@ -59,45 +58,43 @@ namespace Algorithms_and_data_structures
         {
             if (root != null)
             {
-                InOrderRecursiveTreeDisplay(root.left);
-                Console.Write("({0})", root.data);
-                InOrderRecursiveTreeDisplay(root.right);
+                InOrderRecursiveTreeDisplay(root.Left);
+                Console.Write("({0})", root.Data);
+                InOrderRecursiveTreeDisplay(root.Right);
             }
         }
-        private bool RecursiveFindValue(TreeNode root, int data)
+        private void RecursiveFindValue(TreeNode root, int data)
         {
             if (root != null)
             {
-                RecursiveFindValue(root.left, data);
-                RecursiveFindValue(root.right, data);
-                if (root.data == data)
+                RecursiveFindValue(root.Left, data);
+                RecursiveFindValue(root.Right, data);
+                if (root.Data == data)
                 {
                     Console.WriteLine("Value exists!");
-                    return true;
                 }
             }
-            return false;
         }
         private TreeNode GoToTarget(int target) //method will return target node
         {
-            TreeNode c = root;
+            TreeNode c = _root;
             TreeNode returnThis = null;
             while (c != null)
             {
-                if (target < c.data)
+                if (target < c.Data)
                 {
-                    c = c.left;
+                    c = c.Left;
                 }
 
-                if (target == c.data)
+                if (target == c.Data)
                 {
                     returnThis = c;
                     break;
                 }
 
-                if (target > c.data)
+                if (target > c.Data)
                 {
-                    c = c.right;
+                    c = c.Right;
                 }
             }
             return returnThis;
@@ -105,29 +102,29 @@ namespace Algorithms_and_data_structures
         private TreeNode ParentOfTarget(TreeNode target)
         {
             //this method will return the parent node of the target node
-            TreeNode current = root;
+            TreeNode current = _root;
             TreeNode parent = null;
             while (current != null)
             {
-                if (current.left == target || current.right == target)
+                if (current.Left == target || current.Right == target)
                 {
                     parent = current;
                     break;
                 }
-                if (target.data < current.data && current.left != target)
+                if (target.Data < current.Data && current.Left != target)
                 {
-                    current = current.left;
+                    current = current.Left;
                 }
-                if (target.data > current.data && current.right != target)
+                if (target.Data > current.Data && current.Right != target)
                 {
-                    current = current.right;
+                    current = current.Right;
                 }
             }
             return parent;
         }
-        private bool find(int target)
+        private bool Find(int target)
         {
-            if (root != null && regular_find(target) != false)
+            if (_root != null && regular_find(target))
             {
                 return true;
             }
@@ -139,37 +136,37 @@ namespace Algorithms_and_data_structures
         private bool regular_find(int target)
         {
             bool isFound = false;
-            TreeNode current = root;
+            TreeNode current = _root;
             while (current != null && isFound == false)
             {
-                if (current.data == target)
+                if (current.Data == target)
                 {
                     isFound = true;
                 }
-                if (target < current.data)
+                if (target < current.Data)
                 {
-                    if (current.left == null)
+                    if (current.Left == null)
                     {
                         break;
                     }
                     else
                     {
-                        current = current.left;
+                        current = current.Left;
                     }
                 }
-                if (target > current.data)
+                if (target > current.Data)
                 {
-                    if (current.right == null)
+                    if (current.Right == null)
                     {
                         break;
                     }
                     else
                     {
-                        current = current.right;
+                        current = current.Right;
                     }
                 }
             }
-            if (isFound == true)
+            if (isFound)
             {
                 Console.WriteLine("Found it!");
                 return true;
@@ -182,16 +179,14 @@ namespace Algorithms_and_data_structures
         }
         private void Remove(int target)
         {
-            if (root == null || find(target) == false) //before we can remove, check to see if it exists
+            if (_root == null || Find(target) == false) //before we can remove, check to see if it exists
             {
                 Console.WriteLine("Value not found to delete!");
-                return;
             }
             else
             {
                 Console.WriteLine("{0} was removed from the tree",
                     Private_Remove(target)); //Private Remove method called here
-                return;
             }
         }
         private int Private_Remove(int target) //private remove method does all work, returns the integer value removed
@@ -199,129 +194,129 @@ namespace Algorithms_and_data_structures
             int temp;
             TreeNode targetNode = GoToTarget(target);
             //case 1, removing the root
-            if (targetNode == root)
+            if (targetNode == _root)
             {
-                if (targetNode.left == null && targetNode.right == null)
+                if (targetNode.Left == null && targetNode.Right == null)
                 {
-                    temp = root.data;
-                    root = null;
+                    temp = _root.Data;
+                    _root = null;
                     return temp;
                 }
-                if (targetNode.left != null)
+                if (targetNode.Left != null)
                 {
                     //replace top with left if a left-right node dne, else go far right as possible
                     //delete left
-                    TreeNode current = root.left;
-                    temp = root.data;
-                    if (root.left.right == null) //if theres no right child of the left child...
+                    TreeNode current = _root.Left;
+                    temp = _root.Data;
+                    if (_root.Left.Right == null) //if theres no right child of the left child...
                     {
-                        root.data = root.left.data;
+                        _root.Data = _root.Left.Data;
                     }
                     else //if there is, we go left and then far right until...
                     {
                         while (current != null)
                         {
                             //we replace the root node with 2nd highest value
-                            if (current.right.right == null)
+                            if (current.Right.Right == null)
                             {
-                                root.data = current.right.data;
+                                _root.Data = current.Right.Data;
                                 break;
                             }
-                            current = current.right;
+                            current = current.Right;
                         }
-                        if (current.right != null)
+                        if (current != null && current.Right != null)
                         {
-                            current.right = current.right.right;
+                            current.Right = current.Right.Right;
                         } //works
                         else
                         {
-                            current.right = null;
+                            if (current != null) current.Right = null;
                         }
                         return temp;
                     }
-                    if (root.left.left == null)
+                    if (_root.Left.Left == null)
                     {
-                        root.left = null;
+                        _root.Left = null;
                     }
                     else
                     {
-                        root.left = root.left.left;
+                        _root.Left = _root.Left.Left;
                     }
                     return temp;
                 }
-                if (targetNode.right != null)
+                if (targetNode.Right != null)
                 {
-                    temp = root.data;
-                    root.data = root.right.data;
-                    if (root.right.right == null)
+                    temp = _root.Data;
+                    _root.Data = _root.Right.Data;
+                    if (_root.Right.Right == null)
                     {
-                        root.right = null;
+                        _root.Right = null;
                     }
                     else
                     {
-                        root.right = root.right.right;
+                        _root.Right = _root.Right.Right;
                     }
                     return temp;
                 }
             }
             //case 2 , removing nonroot
-            if (targetNode.left == null && targetNode.right == null)
+            if (targetNode.Left == null && targetNode.Right == null)
             {
                 //target has no children
-                if (ParentOfTarget(targetNode).left == targetNode)
+                if (ParentOfTarget(targetNode).Left == targetNode)
                 {
-                    temp = targetNode.data;
-                    ParentOfTarget(targetNode).left = null;
+                    temp = targetNode.Data;
+                    ParentOfTarget(targetNode).Left = null;
                 }
                 else
                 {
-                    temp = targetNode.data;
-                    ParentOfTarget(targetNode).right = null;
+                    temp = targetNode.Data;
+                    ParentOfTarget(targetNode).Right = null;
                 }
                 return temp;
             }
             //target has 1 child
-            if (targetNode.left != null && targetNode.right == null)
+            if (targetNode.Left != null && targetNode.Right == null)
             {
-                temp = targetNode.data;
-                ParentOfTarget(targetNode).right = targetNode.left;
+                temp = targetNode.Data;
+                ParentOfTarget(targetNode).Right = targetNode.Left;
                 //ParentOfTarget(targetNode).left = targetNode.left;//HERE
                 return temp;
             }
-            if (targetNode.right != null && targetNode.left == null)
+            if (targetNode.Right != null && targetNode.Left == null)
             {
-                temp = targetNode.data;
+                temp = targetNode.Data;
                 //here if parent is the root, make it left = target->right
-                if (ParentOfTarget(targetNode) == root)
+                if (ParentOfTarget(targetNode) == _root)
                 {
-                    ParentOfTarget(targetNode).left = targetNode.right;
+                    ParentOfTarget(targetNode).Left = targetNode.Right;
                 }
                 else
-                    ParentOfTarget(targetNode).right = targetNode.right;
+                    ParentOfTarget(targetNode).Right = targetNode.Right;
                 return temp;
             }
             //target node has 2 children
-            if (targetNode.left != null && targetNode.right != null)
+            if (targetNode.Left != null && targetNode.Right != null)
             {
-                if (ParentOfTarget(targetNode).left == targetNode)
+                if (ParentOfTarget(targetNode).Left == targetNode)
                 {
                     //take child.left and replace target
-                    temp = targetNode.data;
-                    targetNode.data = targetNode.left.data;
-                    targetNode.left = null;
+                    temp = targetNode.Data;
+                    targetNode.Data = targetNode.Left.Data;
+                    targetNode.Left = null;
                     return temp;
                 }
                 else
                 {
-                    temp = targetNode.data;
-                    targetNode.data = targetNode.left.data;
+                    temp = targetNode.Data;
+                    targetNode.Data = targetNode.Left.Data;
                     //check if left->left not null...
-                    if (targetNode.left.left != null)
+                    if (targetNode.Left.Left != null)
                     {
-                        targetNode.left = targetNode.left.left;
+                        targetNode.Left = targetNode.Left.Left;
                     }
                     else
-                        targetNode.left = null;
+                        targetNode.Left = null;
 
                     return temp;
                 }
@@ -343,7 +338,7 @@ namespace Algorithms_and_data_structures
                     while (!int.TryParse(Console.ReadLine(), out value))
                         Console.Write("Type value: ");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    binary.insert(value);
+                    binary.Insert(value);
                     Console.ResetColor();
                 }
                 if (choice == 2) //remove
@@ -358,7 +353,7 @@ namespace Algorithms_and_data_structures
                 if (choice == 3) //display
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    binary.InOrderRecursiveTreeDisplay(binary.root);
+                    binary.InOrderRecursiveTreeDisplay(binary._root);
                     Console.WriteLine();
                     Console.ResetColor();
                 }
@@ -368,7 +363,7 @@ namespace Algorithms_and_data_structures
                     while (!int.TryParse(Console.ReadLine(), out value))
                         Console.Write("Type value: ");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    binary.RecursiveFindValue(binary.root, value);
+                    binary.RecursiveFindValue(binary._root, value);
                     Console.ResetColor();
                 }
             } while (choice != 5); //exit, end of loop

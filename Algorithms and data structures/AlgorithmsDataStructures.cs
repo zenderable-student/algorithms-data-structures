@@ -2,14 +2,14 @@
 
 namespace Algorithms_and_data_structures
 {
-    //A simple console app with all algorithms and data structures at my university (UKW)
+    //This is simple console app with all algorithms and data structures that I need to do to pass the exam at my university (UKW).
     public static class MainMenu
     {
         private static void Main()
         {
             string navigation;
             StartScreen(); //beginning of program
-            Start:
+            Start: //goto statement (what?!)
             Console.WriteLine("Type '1' if you want check some algorithms\nType '2' if you want check some examples of data structures");
             Console.Write("Your choice: ");
             int firstChoice;
@@ -436,7 +436,7 @@ namespace Algorithms_and_data_structures
             }
             Console.ReadKey(); //end of program
         }
-        private static void DataStructuresList()
+        private static void DataStructuresList() //menu method
         {
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -444,7 +444,7 @@ namespace Algorithms_and_data_structures
             Console.ResetColor();
             Console.WriteLine("\n1: Stack\n2: Array\n3: List\n4: LinkedList\n5: Queue\n6: Binary Tree"); //here more data structures
         }
-        private static void AlgorithmsList()
+        private static void AlgorithmsList() //menu method
         {
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -452,7 +452,7 @@ namespace Algorithms_and_data_structures
             Console.ResetColor();
             Console.WriteLine("\n1: Factorial\n2: Fibonacci number\n3: Bubble sort\n4: Binary search\n5: Quick sort\n6: Insertion sort\n7: Merge sort"); //here more algorithms
         }
-        private static void StartScreen()
+        private static void StartScreen() //welcome screen method
         {
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Red;

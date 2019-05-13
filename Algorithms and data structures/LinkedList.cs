@@ -110,11 +110,10 @@ namespace Algorithms_and_data_structures
         {
             Node prev = null;
             Node current = singlyList.Head;
-            Node temp = null;
 
             while (current != null) //traverse linked list using two pointers
             {
-                temp = current.Next; //Move one pointer by one and other pointer by two
+                var temp = current.Next;
                 current.Next = prev; 
                 prev = current;
                 current = temp;

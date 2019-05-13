@@ -4,70 +4,64 @@ namespace Algorithms_and_data_structures
 {
     class Queue
     {
-        private static int front, rear, capacity;
-        private static int[] queue;
+        private static int _front, _rear, _capacity;
+        private static int[] _queue;
         private Queue(int c)
         {
-            front = rear = 0;
-            capacity = c;
-            queue = new int[capacity];
+            _front = _rear = 0;
+            _capacity = c;
+            _queue = new int[_capacity];
         }
         private void Enqueue(int data) //function to insert an element to the rear of the queue
         {
-            if (capacity == rear) //check queue is full or not
+            if (_capacity == _rear) //check queue is full or not
             {
                 Console.Write("\nQueue is full\n");
-                return;
             }
             else //insert element at the rear  
             {
-                queue[rear] = data;
-                rear++;
+                _queue[_rear] = data;
+                _rear++;
             }
-            return;
         }
         private void Dequeue() //function to delete an element from the front of the queue 
         {
-            if (front == rear) //if queue is empty
+            if (_front == _rear) //if queue is empty
             {
                 Console.Write("\nQueue is empty\n");
-                return;
             }
             else //shift all the elements from index 2 till rear to the right by one
             {
-                for (int i = 0; i < rear - 1; i++)
+                for (int i = 0; i < _rear - 1; i++)
                 {
-                    queue[i] = queue[i + 1];
+                    _queue[i] = _queue[i + 1];
                 }
-                if (rear < capacity) //store 0 at rear indicating there's no element 
-                    queue[rear] = 0;
-                rear--; //decrement rear
+                if (_rear < _capacity) //store 0 at rear indicating there's no element 
+                    _queue[_rear] = 0;
+                _rear--; //decrement rear
             }
-            return;
         }
         private void Display() //print queue elements  
         {
             int i;
-            if (front == rear)
+            if (_front == _rear)
             {
                 Console.Write("\nQueue is empty\n");
                 return;
             }
-            for (i = front; i < rear; i++) //traverse front to rear and print elements
+            for (i = _front; i < _rear; i++) //traverse front to rear and print elements
             {
-                Console.Write(" {0} <-- ", queue[i]);
+                Console.Write(" {0} <-- ", _queue[i]);
             }
-            return;
         }
         private void Peek()  //print front of queue
         {
-            if (front == rear)
+            if (_front == _rear)
             {
                 Console.Write("\nQueue is empty\n");
                 return;
             }
-            Console.Write("\nFront element is: {0}", queue[front]);
-            return;
+            Console.Write("\nFront element is: {0}", _queue[_front]);
         }
         public static void QueueMenu()
         {
