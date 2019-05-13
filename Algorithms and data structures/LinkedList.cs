@@ -113,7 +113,7 @@ namespace Algorithms_and_data_structures
 
             while (current != null) //traverse linked list using two pointers
             {
-                var temp = current.Next;
+                var temp = current.Next; //Move one pointer by one and other pointer by two
                 current.Next = prev; 
                 prev = current;
                 current = temp;
