@@ -18,18 +18,18 @@ namespace Algorithms_and_data_structures
                     Console.Write($"Something wrong! Type again {i + 1} number: ");
                 array[i] = number;
             }
-            int val, flag;
+            int value, flag;
             for (int i = 1; i < insertionsortamount; i++) //start sorting process
             {
-                val = array[i];
+                value = array[i];
                 flag = 0;
                 for (int j = i - 1; j >= 0 && flag != 1;) //in each loop, the current element is inserted into its correct position in the array
                 {
-                    if (val < array[j])
+                    if (value < array[j])
                     {
                         array[j + 1] = array[j];
                         j--;
-                        array[j + 1] = val;
+                        array[j + 1] = value;
                     }
                     else flag = 1; //it's go until all is sorted
                 }

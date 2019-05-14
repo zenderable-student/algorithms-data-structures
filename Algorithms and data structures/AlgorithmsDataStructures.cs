@@ -145,7 +145,7 @@ namespace Algorithms_and_data_structures
                         AgainBubbleSort:
                         BubbleSort.Bubble();
                         TryAgainMenuBubble:
-                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");
                         navigation = Console.ReadLine();
                         if ((navigation == "R") || (navigation == "r"))
@@ -170,7 +170,7 @@ namespace Algorithms_and_data_structures
                         AgainBinarySearch:
                         BinarySearch.BinarySearchMenu();
                         TryAgainMenuBinarySearch:
-                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");
                         navigation = Console.ReadLine();
                         if (navigation == "R" || navigation == "r")
@@ -195,7 +195,7 @@ namespace Algorithms_and_data_structures
                         AgainQuickSort:
                         QuickSort.QuickSortMenu();
                         TryAgainMenuQuickSort:
-                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");
                         navigation = Console.ReadLine();
                         if (navigation == "R" || navigation == "r")
@@ -220,7 +220,7 @@ namespace Algorithms_and_data_structures
                         AgainInsertionSort:
                         InsertionSort.Sort();
                         TryAgainMenuInsertionSort:
-                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");
                         navigation = Console.ReadLine();
                         if (navigation == "R" || navigation == "r")
@@ -245,7 +245,7 @@ namespace Algorithms_and_data_structures
                         AgainMergeSort:
                         MergeSort.Merge();
                         TryAgainMenuMergeSort:
-                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
+                        Console.WriteLine("\nIf you want try again use this algorithm, type 'R'.\nIf you want back to algorithm list, type 'L'.\nIf you want back to main menu, type 'Q'");
                         Console.Write("Type: ");
                         navigation = Console.ReadLine();
                         if (navigation == "R" || navigation == "r")

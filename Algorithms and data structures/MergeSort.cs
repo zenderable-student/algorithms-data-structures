@@ -15,14 +15,7 @@ namespace Algorithms_and_data_structures
         private static readonly int X = ArraySizeMethod(); //size of the array to sort
         private static readonly int[] ArraySize = new int[X]; //array to sort
         private static readonly int[] ArraySizeSecondary = new int[X]; //secondary array (for help)
-        /// <summary>
-        /// Array merge:
-        /// first array has index from "beg" to ("beg" + "end") / 2
-        /// second array has index from (("beg" + "end") / 2) + 1 to "end"
-        /// </summary>
-        /// <param name="beg">beginning of first array</param>
-        /// <param name="end">end of second array</param>
-        static void Merging(int beg, int end)
+        static void Merging(int beg, int end) //beg - beginning of first array, end - end of second array
         {
             //copy values to secondary array
             for (var i = beg; i <= end; i++)
@@ -31,9 +24,9 @@ namespace Algorithms_and_data_structures
             }
             //merge array
             int b = beg;
-            int e = (beg + end) / 2 + 1;
+            int e = (beg + end) / 2 + 1; //second array has index from(("beg" + "end") / 2) + 1 to "end"
             int x = beg;
-            while (b <= (beg + end) / 2 && e <= end)
+            while (b <= (beg + end) / 2 && e <= end) // first array has index from "beg" to ("beg" + "end") / 2
             {
                 if (ArraySizeSecondary[b] < ArraySizeSecondary[e])
                 {
@@ -56,12 +49,7 @@ namespace Algorithms_and_data_structures
                 b++;
             }
         }
-        /// <summary>
-        /// Sortowanie przez scalanie (mergesort)
-        /// </summary>
-        /// <param name="beg">begining of array to sort</param>
-        /// <param name="end">ending of array to sort</param>
-        static void Sorting(int beg, int end)
+        static void Sorting(int beg, int end) //beg - beginning of array to sort, end - ending of array to sort
         {
             if (beg < end)
             {

@@ -102,7 +102,7 @@ namespace Algorithms_and_data_structures
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nThis is your stack: "); //show from top to bottom
-                for (int i = 0; i <= _top; i++)
+                for (int i = _top; i >= 0; i--)
                 {
                     Console.WriteLine(TabStack[i]);
                 }

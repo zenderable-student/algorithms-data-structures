@@ -14,7 +14,7 @@ namespace Algorithms_and_data_structures
     class Tree
     {
         private TreeNode
-            _root; //this is public so we can access this tree node from main when we display our tree using the recursive function
+            _root; //we can access this tree node from main when we display our tree using the recursive function
         private Tree()
         {
             _root = null;
