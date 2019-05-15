@@ -1,4 +1,5 @@
 ﻿using System;
+using Trees;
 
 namespace Algorithms_and_data_structures
 {
@@ -405,7 +406,7 @@ namespace Algorithms_and_data_structures
                     }
                 case 6: //Binary Tree
                     AgainBinaryTree:
-                    Tree.TreeMenu();
+                    BinaryTreeMenu.TreeMenu();
                     TryAgainBinaryTree:
                     Console.WriteLine("\nIf you want try again use this data structure, type 'R'.\nIf you want back to data structures list, type 'L'.\nIf you want back to main menu, type 'Q'");
                     Console.Write("Type: ");

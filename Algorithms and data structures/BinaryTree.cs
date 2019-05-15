@@ -1,372 +1,210 @@
 ﻿using System;
-namespace Algorithms_and_data_structures
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+
+namespace Trees
 {
-    class TreeNode
+    public class BinaryTree<T>
     {
-        public int Data;
-        public TreeNode Left { get; set; }
-        public TreeNode Right { get; set; }
-        public TreeNode(int data)
+        public BinaryTreeNode<T> Root { get; set; }
+        public int Count { get; set; }
+        public List<BinaryTreeNode<T>> Traverse(TraversalEnum mode)
         {
-            Data = data;
+            List<BinaryTreeNode<T>> nodes = new List<BinaryTreeNode<T>>();
+            switch (mode)
+            {
+                case TraversalEnum.PREORDER:
+                    TraversePreOrder(Root, nodes);
+                    break;
+                case TraversalEnum.INORDER:
+                    TraverseInOrder(Root, nodes);
+                    break;
+                case TraversalEnum.POSTORDER:
+                    TraversePostOrder(Root, nodes);
+                    break;
+            }
+            return nodes;
+        }
+        private void TraversePreOrder(BinaryTreeNode<T> node, List<BinaryTreeNode<T>> result)
+        {
+            if (node != null)
+            {
+                result.Add(node);
+                TraversePreOrder(node.Left, result);
+                TraversePreOrder(node.Right, result);
+            }
+        }
+        private void TraverseInOrder(BinaryTreeNode<T> node, List<BinaryTreeNode<T>> result)
+        {
+            if (node != null)
+            {
+                TraverseInOrder(node.Left, result);
+                result.Add(node);
+                TraverseInOrder(node.Right, result);
+            }
+        }
+        private void TraversePostOrder(BinaryTreeNode<T> node, List<BinaryTreeNode<T>> result)
+        {
+            if (node != null)
+            {
+                TraversePostOrder(node.Left, result);
+                TraversePostOrder(node.Right, result);
+                result.Add(node);
+            }
+        }
+        public int GetHeight()
+        {
+            int height = 0;
+            foreach (BinaryTreeNode<T> node in Traverse(TraversalEnum.PREORDER))
+            {
+                height = Math.Max(height, node.GetHeight());
+            }
+            return height;
         }
     }
-    class Tree
+    public class BinaryTreeMenu
     {
-        private TreeNode
-            _root; //we can access this tree node from main when we display our tree using the recursive function
-        private Tree()
-        {
-            _root = null;
-        }
-        private void Insert(int data)
-        {
-            TreeNode newItem = new TreeNode(data); //our new node to insert into the tree
-            if (_root == null) //if there is no root, make the first new node the root
-            {
-                _root = newItem;
-            }
-            else
-            {
-                TreeNode
-                    current = _root; //we make a new tree node called current and assign to the root, so we start iteration from there
-
-                while (current != null) //while the current is not equal to null (since we have it equal to root)
-                {
-                    var parent = current;
-
-                    if (data < current.Data) //if new item (data) is less than the current node's data, link it to the left node
-                    {
-                        current = current.Left;
-                        if (current == null) //if the current.left is null
-                        {
-                            parent.Left = newItem; //make parent.left store the new node
-                        }
-                    }
-                    else
-                    {
-                        current = current.Right;
-                        if (current == null)
-                        {
-                            parent.Right = newItem;
-                        }
-                    }
-                }
-            }
-        }
-        private void InOrderRecursiveTreeDisplay(TreeNode root)
-        {
-            if (root != null)
-            {
-                InOrderRecursiveTreeDisplay(root.Left);
-                Console.Write("({0})", root.Data);
-                InOrderRecursiveTreeDisplay(root.Right);
-            }
-        }
-        private void RecursiveFindValue(TreeNode root, int data)
-        {
-            if (root != null)
-            {
-                RecursiveFindValue(root.Left, data);
-                RecursiveFindValue(root.Right, data);
-                if (root.Data == data)
-                {
-                    Console.WriteLine("Value exists!");
-                }
-            }
-        }
-        private TreeNode GoToTarget(int target) //method will return target node
-        {
-            TreeNode c = _root;
-            TreeNode returnThis = null;
-            while (c != null)
-            {
-                if (target < c.Data)
-                {
-                    c = c.Left;
-                }
-
-                if (target == c.Data)
-                {
-                    returnThis = c;
-                    break;
-                }
-
-                if (target > c.Data)
-                {
-                    c = c.Right;
-                }
-            }
-            return returnThis;
-        }
-        private TreeNode ParentOfTarget(TreeNode target)
-        {
-            //this method will return the parent node of the target node
-            TreeNode current = _root;
-            TreeNode parent = null;
-            while (current != null)
-            {
-                if (current.Left == target || current.Right == target)
-                {
-                    parent = current;
-                    break;
-                }
-                if (target.Data < current.Data && current.Left != target)
-                {
-                    current = current.Left;
-                }
-                if (target.Data > current.Data && current.Right != target)
-                {
-                    current = current.Right;
-                }
-            }
-            return parent;
-        }
-        private bool Find(int target)
-        {
-            if (_root != null && regular_find(target))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        private bool regular_find(int target)
-        {
-            bool isFound = false;
-            TreeNode current = _root;
-            while (current != null && isFound == false)
-            {
-                if (current.Data == target)
-                {
-                    isFound = true;
-                }
-                if (target < current.Data)
-                {
-                    if (current.Left == null)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        current = current.Left;
-                    }
-                }
-                if (target > current.Data)
-                {
-                    if (current.Right == null)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        current = current.Right;
-                    }
-                }
-            }
-            if (isFound)
-            {
-                Console.WriteLine("Found it!");
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("Not found");
-                return false;
-            }
-        }
-        private void Remove(int target)
-        {
-            if (_root == null || Find(target) == false) //before we can remove, check to see if it exists
-            {
-                Console.WriteLine("Value not found to delete!");
-            }
-            else
-            {
-                Console.WriteLine("{0} was removed from the tree",
-                    Private_Remove(target)); //Private Remove method called here
-            }
-        }
-        private int Private_Remove(int target) //private remove method does all work, returns the integer value removed
-        {
-            int temp;
-            TreeNode targetNode = GoToTarget(target);
-            //case 1, removing the root
-            if (targetNode == _root)
-            {
-                if (targetNode.Left == null && targetNode.Right == null)
-                {
-                    temp = _root.Data;
-                    _root = null;
-                    return temp;
-                }
-                if (targetNode.Left != null)
-                {
-                    //replace top with left if a left-right node dne, else go far right as possible
-                    //delete left
-                    TreeNode current = _root.Left;
-                    temp = _root.Data;
-                    if (_root.Left.Right == null) //if theres no right child of the left child...
-                    {
-                        _root.Data = _root.Left.Data;
-                    }
-                    else //if there is, we go left and then far right until...
-                    {
-                        while (current != null)
-                        {
-                            //we replace the root node with 2nd highest value
-                            if (current.Right.Right == null)
-                            {
-                                _root.Data = current.Right.Data;
-                                break;
-                            }
-                            current = current.Right;
-                        }
-                        if (current != null && current.Right != null)
-                        {
-                            current.Right = current.Right.Right;
-                        } //works
-                        else
-                        {
-                            if (current != null) current.Right = null;
-                        }
-                        return temp;
-                    }
-                    if (_root.Left.Left == null)
-                    {
-                        _root.Left = null;
-                    }
-                    else
-                    {
-                        _root.Left = _root.Left.Left;
-                    }
-                    return temp;
-                }
-                if (targetNode.Right != null)
-                {
-                    temp = _root.Data;
-                    _root.Data = _root.Right.Data;
-                    if (_root.Right.Right == null)
-                    {
-                        _root.Right = null;
-                    }
-                    else
-                    {
-                        _root.Right = _root.Right.Right;
-                    }
-                    return temp;
-                }
-            }
-            //case 2 , removing nonroot
-            if (targetNode.Left == null && targetNode.Right == null)
-            {
-                //target has no children
-                if (ParentOfTarget(targetNode).Left == targetNode)
-                {
-                    temp = targetNode.Data;
-                    ParentOfTarget(targetNode).Left = null;
-                }
-                else
-                {
-                    temp = targetNode.Data;
-                    ParentOfTarget(targetNode).Right = null;
-                }
-                return temp;
-            }
-            //target has 1 child
-            if (targetNode.Left != null && targetNode.Right == null)
-            {
-                temp = targetNode.Data;
-                ParentOfTarget(targetNode).Right = targetNode.Left;
-                //ParentOfTarget(targetNode).left = targetNode.left;//HERE
-                return temp;
-            }
-            if (targetNode.Right != null && targetNode.Left == null)
-            {
-                temp = targetNode.Data;
-                //here if parent is the root, make it left = target->right
-                if (ParentOfTarget(targetNode) == _root)
-                {
-                    ParentOfTarget(targetNode).Left = targetNode.Right;
-                }
-                else
-                    ParentOfTarget(targetNode).Right = targetNode.Right;
-                return temp;
-            }
-            //target node has 2 children
-            if (targetNode.Left != null && targetNode.Right != null)
-            {
-                if (ParentOfTarget(targetNode).Left == targetNode)
-                {
-                    //take child.left and replace target
-                    temp = targetNode.Data;
-                    targetNode.Data = targetNode.Left.Data;
-                    targetNode.Left = null;
-                    return temp;
-                }
-                else
-                {
-                    temp = targetNode.Data;
-                    targetNode.Data = targetNode.Left.Data;
-                    //check if left->left not null...
-                    if (targetNode.Left.Left != null)
-                    {
-                        targetNode.Left = targetNode.Left.Left;
-                    }
-                    else
-                        targetNode.Left = null;
-
-                    return temp;
-                }
-            }
-            return Int32.MinValue;
-        }
+        private const int COLUMN_WIDTH = 5;
         public static void TreeMenu()
         {
-            Tree binary = new Tree();
-            int choice, value;
+            Console.OutputEncoding = Encoding.UTF8;
+            BinarySearchTree<int> tree = new BinarySearchTree<int>();
+            int choiceRoot, choiceRootLeft, choiceRootRight, choice, data;
+            Console.Write("\nThis is a binary tree data structure. Type root value (the best will be > 100): ");
+            while (!int.TryParse(Console.ReadLine(), out choiceRoot))
+                Console.Write("Type value: ");
+            tree.Root = new BinaryTreeNode<int>() { Data = choiceRoot };
+            Console.Write("\nType left value: ");
+            while (!int.TryParse(Console.ReadLine(), out choiceRootLeft))
+                Console.Write("Type value: "); ;
+            tree.Root.Left = new BinaryTreeNode<int>() { Data = choiceRootLeft, Parent = tree.Root };
+            Console.Write("\nType right value: ");
+            while (!int.TryParse(Console.ReadLine(), out choiceRootRight))
+                Console.Write("Type value: "); ;
+            tree.Root.Right = new BinaryTreeNode<int>() { Data = choiceRootRight, Parent = tree.Root };
+            tree.Count = 3;
             do
             {
-                Console.Write("\n1. INSERT\n2. REMOVE\n3. DISPLAY (InOrder)\n4. FIND\n5. EXIT TO MENU\nYour choice: "); //pick option
+                Console.Write("\n1. ADD\n2. REMOVE\n3. TRAVERSE\n4. DISPLAY\n5. EXIT TO MENU\nYour choice: "); //pick option
                 while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 5))
                     Console.Write("Type '1' to '5': "); //if wrong, type correct integer
                 if (choice == 1) //adds an item into the binary tree
                 {
                     Console.Write("Enter value: ");
-                    while (!int.TryParse(Console.ReadLine(), out value))
+                    while (!int.TryParse(Console.ReadLine(), out data))
                         Console.Write("Type value: ");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    binary.Insert(value);
-                    Console.ResetColor();
+                    tree.Add(data);
                 }
                 if (choice == 2) //remove
                 {
                     Console.Write("Enter value: ");
-                    while (!int.TryParse(Console.ReadLine(), out value))
+                    while (!int.TryParse(Console.ReadLine(), out data))
                         Console.Write("Type value: ");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    binary.Remove(value);
-                    Console.ResetColor();
+                    tree.Remove(data);
                 }
-                if (choice == 3) //display
+                if (choice == 3) //traverse
+                {
+                    int traverseChoice;
+                    Console.Write("\n1. PreOrder\n2. InOrder\n3. PostOrder\nYour choice: ");
+                    while (!int.TryParse(Console.ReadLine(), out traverseChoice))
+                        Console.Write("Type value: ");
+                    if (traverseChoice == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(string.Join(", ", tree.Traverse(TraversalEnum.PREORDER).Select(n => n.Data)));
+                        Console.ResetColor();
+                    }
+                    if (traverseChoice == 2)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(string.Join(", ", tree.Traverse(TraversalEnum.INORDER).Select(n => n.Data)));
+                        Console.ResetColor();
+                    }
+                    if (traverseChoice == 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(string.Join(", ", tree.Traverse(TraversalEnum.POSTORDER).Select(n => n.Data)));
+                        Console.ResetColor();
+                    }
+                }
+                if (choice == 4) //display
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    binary.InOrderRecursiveTreeDisplay(binary._root);
-                    Console.WriteLine();
-                    Console.ResetColor();
-                }
-                if (choice == 4) //find
-                {
-                    Console.Write("Enter value: ");
-                    while (!int.TryParse(Console.ReadLine(), out value))
-                        Console.Write("Type value: ");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    binary.RecursiveFindValue(binary._root, value);
+                    VisualizeTree(tree, " -----> ");
                     Console.ResetColor();
                 }
             } while (choice != 5); //exit, end of loop
+        }
+        private static void VisualizeTree(BinarySearchTree<int> tree, string caption)
+        {
+            Console.WriteLine(tree.Count);
+            char[][] console = InitializeVisualization(tree, out int width);
+            VisualizeNode(tree.Root, 0, width / 2, console, width);
+            Console.WriteLine(caption);
+            foreach (char[] row in console)
+            {
+                Console.WriteLine(row);
+            }
+        }
+
+        private static char[][] InitializeVisualization(BinarySearchTree<int> tree, out int width)
+        {
+            int height = tree.GetHeight();
+            width = (int)Math.Pow(2, height) - 1;
+            char[][] console = new char[height * 2][];
+            for (int i = 0; i < height * 2; i++)
+            {
+                console[i] = new char[COLUMN_WIDTH * width];
+            }
+            return console;
+        }
+        private static void VisualizeNode(BinaryTreeNode<int> node, int row, int column, char[][] console, int width)
+        {
+            if (node != null)
+            {
+                char[] chars = node.Data.ToString().ToCharArray();
+                int margin = (COLUMN_WIDTH - chars.Length) / 2;
+                for (int i = 0; i < chars.Length; i++)
+                {
+                    console[row][COLUMN_WIDTH * column + i + margin] = chars[i];
+                }
+
+                int columnDelta = (width + 1) / (int)Math.Pow(2, node.GetHeight() + 1);
+                VisualizeNode(node.Left, row + 2, column - columnDelta, console, width);
+                VisualizeNode(node.Right, row + 2, column + columnDelta, console, width);
+                DrawLineLeft(node, row, column, console, columnDelta);
+                DrawLineRight(node, row, column, console, columnDelta);
+            }
+        }
+
+        private static void DrawLineRight(BinaryTreeNode<int> node, int row, int column, char[][] console, int columnDelta)
+        {
+            if (node.Right != null)
+            {
+                int startColumnIndex = COLUMN_WIDTH * column + 2;
+                int endColumnIndex = COLUMN_WIDTH * (column + columnDelta) + 2;
+                for (int x = startColumnIndex + 1; x < endColumnIndex; x++)
+                {
+                    console[row + 1][x] = '-';
+                }
+                console[row + 1][startColumnIndex] = '+';
+                console[row + 1][endColumnIndex] = '\u2510';
+            }
+        }
+        private static void DrawLineLeft(BinaryTreeNode<int> node, int row, int column, char[][] console, int columnDelta)
+        {
+            if (node.Left != null)
+            {
+                int startColumnIndex = COLUMN_WIDTH * (column - columnDelta) + 2;
+                int endColumnIndex = COLUMN_WIDTH * column + 2;
+                for (int x = startColumnIndex + 1; x < endColumnIndex; x++)
+                {
+                    console[row + 1][x] = '-';
+                }
+                console[row + 1][startColumnIndex] = '\u250c';
+                console[row + 1][endColumnIndex] = '+';
+            }
         }
     }
 }
