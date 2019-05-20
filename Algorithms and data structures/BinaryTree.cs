@@ -75,11 +75,11 @@ namespace Trees
             while (!int.TryParse(Console.ReadLine(), out choiceRoot))
                 Console.Write("Type value: ");
             tree.Root = new BinaryTreeNode<int>() { Data = choiceRoot };
-            Console.Write("\nType left value: ");
+            Console.Write("Type left value: ");
             while (!int.TryParse(Console.ReadLine(), out choiceRootLeft))
                 Console.Write("Type value: "); ;
             tree.Root.Left = new BinaryTreeNode<int>() { Data = choiceRootLeft, Parent = tree.Root };
-            Console.Write("\nType right value: ");
+            Console.Write("Type right value: ");
             while (!int.TryParse(Console.ReadLine(), out choiceRootRight))
                 Console.Write("Type value: "); ;
             tree.Root.Right = new BinaryTreeNode<int>() { Data = choiceRootRight, Parent = tree.Root };
