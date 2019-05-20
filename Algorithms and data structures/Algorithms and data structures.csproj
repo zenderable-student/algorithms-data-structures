@@ -110,6 +110,8 @@
     <Compile Include="TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Algorithms and data structures.docx" />
+    <None Include="Algorithms and data structures.pdf" />
     <None Include="App.config" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
