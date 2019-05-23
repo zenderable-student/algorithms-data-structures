@@ -71,19 +71,19 @@ namespace Trees
             Console.OutputEncoding = Encoding.UTF8;
             BinarySearchTree<int> tree = new BinarySearchTree<int>();
             int choiceRoot, choiceRootLeft, choiceRootRight, choice, data;
-            Console.Write("\nThis is a binary tree data structure. Type root value (the best will be > 100): ");
-            while (!int.TryParse(Console.ReadLine(), out choiceRoot))
-                Console.Write("Type value: ");
-            tree.Root = new BinaryTreeNode<int>() { Data = choiceRoot };
-            Console.Write("Type left value: ");
-            while (!int.TryParse(Console.ReadLine(), out choiceRootLeft))
-                Console.Write("Type value: "); ;
-            tree.Root.Left = new BinaryTreeNode<int>() { Data = choiceRootLeft, Parent = tree.Root };
-            Console.Write("Type right value: ");
-            while (!int.TryParse(Console.ReadLine(), out choiceRootRight))
-                Console.Write("Type value: "); ;
-            tree.Root.Right = new BinaryTreeNode<int>() { Data = choiceRootRight, Parent = tree.Root };
-            tree.Count = 3;
+            //Console.Write("\nThis is a binary tree data structure. Type root value (the best will be > 100): ");
+            //while (!int.TryParse(Console.ReadLine(), out choiceRoot))
+            //    Console.Write("Type value: ");
+            //tree.Root = new BinaryTreeNode<int>() { Data = choiceRoot };
+            //Console.Write("Type left value: ");
+            //while (!int.TryParse(Console.ReadLine(), out choiceRootLeft))
+            //    Console.Write("Type value: "); ;
+            //tree.Root.Left = new BinaryTreeNode<int>() { Data = choiceRootLeft, Parent = tree.Root };
+            //Console.Write("Type right value: ");
+            //while (!int.TryParse(Console.ReadLine(), out choiceRootRight))
+            //    Console.Write("Type value: "); ;
+            //tree.Root.Right = new BinaryTreeNode<int>() { Data = choiceRootRight, Parent = tree.Root };
+            //tree.Count = 3;
             do
             {
                 Console.Write("\n1. ADD\n2. REMOVE\n3. TRAVERSE\n4. DISPLAY\n5. EXIT TO MENU\nYour choice: "); //pick option
