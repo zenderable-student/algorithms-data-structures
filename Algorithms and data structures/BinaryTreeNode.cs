@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-namespace Trees
+
+namespace Algorithms_and_data_structures
 {
     public class BinaryTreeNode<T> : TreeNode<T>
     {

@@ -1,9 +1,9 @@
-﻿namespace Trees
+﻿namespace Algorithms_and_data_structures
 {
     public enum TraversalEnum
     {
-        PREORDER,
-        INORDER,
-        POSTORDER
+        Preorder,
+        Inorder,
+        Postorder
     }
 }

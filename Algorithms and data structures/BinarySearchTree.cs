@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Trees
+namespace Algorithms_and_data_structures
 {
     public class BinarySearchTree<T> : BinaryTree<T>
         where T : IComparable

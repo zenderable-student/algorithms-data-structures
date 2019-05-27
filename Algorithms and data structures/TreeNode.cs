@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-
-namespace Trees
+namespace Algorithms_and_data_structures
 {
     public class TreeNode<T>
     {
         public T Data { get; set; }
-        public List<TreeNode<T>> Children { get; set; }
+        protected List<TreeNode<T>> Children { get; set; }
     }
 }

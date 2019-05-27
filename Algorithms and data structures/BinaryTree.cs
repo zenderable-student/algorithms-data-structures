@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Text;
 
-namespace Trees
+namespace Algorithms_and_data_structures
 {
     public class BinaryTree<T>
     {
@@ -14,13 +14,13 @@ namespace Trees
             List<BinaryTreeNode<T>> nodes = new List<BinaryTreeNode<T>>();
             switch (mode)
             {
-                case TraversalEnum.PREORDER:
+                case TraversalEnum.Preorder:
                     TraversePreOrder(Root, nodes);
                     break;
-                case TraversalEnum.INORDER:
+                case TraversalEnum.Inorder:
                     TraverseInOrder(Root, nodes);
                     break;
-                case TraversalEnum.POSTORDER:
+                case TraversalEnum.Postorder:
                     TraversePostOrder(Root, nodes);
                     break;
             }
@@ -56,7 +56,7 @@ namespace Trees
         public int GetHeight()
         {
             int height = 0;
-            foreach (BinaryTreeNode<T> node in Traverse(TraversalEnum.PREORDER))
+            foreach (BinaryTreeNode<T> node in Traverse(TraversalEnum.Preorder))
             {
                 height = Math.Max(height, node.GetHeight());
             }
@@ -65,7 +65,7 @@ namespace Trees
     }
     public class BinaryTreeMenu
     {
-        private const int COLUMN_WIDTH = 5;
+        private const int ColumnWidth = 5;
         public static void TreeMenu()
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -130,19 +130,19 @@ namespace Trees
                     if (traverseChoice == 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(string.Join(", ", tree.Traverse(TraversalEnum.PREORDER).Select(n => n.Data)));
+                        Console.Write(string.Join(", ", tree.Traverse(TraversalEnum.Preorder).Select(n => n.Data)));
                         Console.ResetColor();
                     }
                     if (traverseChoice == 2)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(string.Join(", ", tree.Traverse(TraversalEnum.INORDER).Select(n => n.Data)));
+                        Console.Write(string.Join(", ", tree.Traverse(TraversalEnum.Inorder).Select(n => n.Data)));
                         Console.ResetColor();
                     }
                     if (traverseChoice == 3)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine(string.Join(", ", tree.Traverse(TraversalEnum.POSTORDER).Select(n => n.Data)));
+                        Console.WriteLine(string.Join(", ", tree.Traverse(TraversalEnum.Postorder).Select(n => n.Data)));
                         Console.ResetColor();
                     }
                 }
@@ -173,7 +173,7 @@ namespace Trees
             char[][] console = new char[height * 2][];
             for (int i = 0; i < height * 2; i++)
             {
-                console[i] = new char[COLUMN_WIDTH * width];
+                console[i] = new char[ColumnWidth * width];
             }
             return console;
         }
@@ -182,10 +182,10 @@ namespace Trees
             if (node != null)
             {
                 char[] chars = node.Data.ToString().ToCharArray();
-                int margin = (COLUMN_WIDTH - chars.Length) / 2;
+                int margin = (ColumnWidth - chars.Length) / 2;
                 for (int i = 0; i < chars.Length; i++)
                 {
-                    console[row][COLUMN_WIDTH * column + i + margin] = chars[i];
+                    console[row][ColumnWidth * column + i + margin] = chars[i];
                 }
 
                 int columnDelta = (width + 1) / (int)Math.Pow(2, node.GetHeight() + 1);
@@ -200,8 +200,8 @@ namespace Trees
         {
             if (node.Right != null)
             {
-                int startColumnIndex = COLUMN_WIDTH * column + 2;
-                int endColumnIndex = COLUMN_WIDTH * (column + columnDelta) + 2;
+                int startColumnIndex = ColumnWidth * column + 2;
+                int endColumnIndex = ColumnWidth * (column + columnDelta) + 2;
                 for (int x = startColumnIndex + 1; x < endColumnIndex; x++)
                 {
                     console[row + 1][x] = '-';
@@ -214,8 +214,8 @@ namespace Trees
         {
             if (node.Left != null)
             {
-                int startColumnIndex = COLUMN_WIDTH * (column - columnDelta) + 2;
-                int endColumnIndex = COLUMN_WIDTH * column + 2;
+                int startColumnIndex = ColumnWidth * (column - columnDelta) + 2;
+                int endColumnIndex = ColumnWidth * column + 2;
                 for (int x = startColumnIndex + 1; x < endColumnIndex; x++)
                 {
                     console[row + 1][x] = '-';
