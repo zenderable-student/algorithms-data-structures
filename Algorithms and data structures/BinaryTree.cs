@@ -70,7 +70,8 @@ namespace Trees
         {
             Console.OutputEncoding = Encoding.UTF8;
             BinarySearchTree<int> tree = new BinarySearchTree<int>();
-            int choiceRoot, choiceRootLeft, choiceRootRight, choice, data;
+            int choice, data;
+            //int choiceRoot, choiceRootLeft, choiceRootRight;
             //Console.Write("\nThis is a binary tree data structure. Type root value (the best will be > 100): ");
             //while (!int.TryParse(Console.ReadLine(), out choiceRoot))
             //    Console.Write("Type value: ");
@@ -83,11 +84,11 @@ namespace Trees
             //while (!int.TryParse(Console.ReadLine(), out choiceRootRight))
             //    Console.Write("Type value: "); ;
             //tree.Root.Right = new BinaryTreeNode<int>() { Data = choiceRootRight, Parent = tree.Root };
-            //tree.Count = 3;
+            tree.Count = 0;
             do
             {
-                Console.Write("\n1. ADD\n2. REMOVE\n3. TRAVERSE\n4. DISPLAY\n5. EXIT TO MENU\nYour choice: "); //pick option
-                while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 5))
+                Console.Write("\n1. ADD\n2. REMOVE\n3. FILL WITH RANDOM NUMBERS\n4. TRAVERSE\n5. DISPLAY\n6. EXIT TO MENU\nYour choice: "); //pick option
+                while (!int.TryParse(Console.ReadLine(), out choice) || !(choice >= 1 && choice <= 6))
                     Console.Write("Type '1' to '5': "); //if wrong, type correct integer
                 if (choice == 1) //adds an item into the binary tree
                 {
@@ -103,7 +104,24 @@ namespace Trees
                         Console.Write("Type value: ");
                     tree.Remove(data);
                 }
-                if (choice == 3) //traverse
+                if (choice == 3) //fill with random numbers
+                {
+                    int howMany;
+                    Console.Write("Enter how many numbers fill randomly: ");
+                    while (!int.TryParse(Console.ReadLine(), out howMany))
+                        Console.Write("Type value: ");
+                    Random random = new Random();
+                    for (int i = 0; i < howMany; i++)
+                    {
+                        int number;
+                        do
+                        {
+                            number = random.Next(100);
+                        } while (tree.Contains(number));
+                        tree.Add(number);
+                    }
+                }
+                if (choice == 4) //traverse
                 {
                     int traverseChoice;
                     Console.Write("\n1. PreOrder\n2. InOrder\n3. PostOrder\nYour choice: ");
@@ -128,13 +146,13 @@ namespace Trees
                         Console.ResetColor();
                     }
                 }
-                if (choice == 4) //display
+                if (choice == 5) //display
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     VisualizeTree(tree, " -----> ");
                     Console.ResetColor();
                 }
-            } while (choice != 5); //exit, end of loop
+            } while (choice != 6); //exit, end of loop
         }
         private static void VisualizeTree(BinarySearchTree<int> tree, string caption)
         {

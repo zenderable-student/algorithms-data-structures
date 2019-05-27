@@ -26,6 +26,7 @@ namespace Trees
             }
             return false;
         }
+
         public void Add(T data)
         {
             BinaryTreeNode<T> parent = GetParentForNewNode(data);
